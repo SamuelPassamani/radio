@@ -3,1033 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRádio - Sua Música, Sua Vida</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Ouveem - WebRádio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Player Fixo no Topo -->
-    <div class="player-fixed">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-6">
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <div class="w-11 h-11 gradient-primary rounded-xl flex items-center justify-center shadow-lg">
-                                <i class="fas fa-broadcast-tower text-white text-lg"></i>
-                            </div>
-                            <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full pulse-ring"></div>
-                        </div>
-                        <div>
-                            <h1 class="font-bold text-lg text-gradient">WebRádio FM</h1>
-                            <div class="flex items-center space-x-2">
-                                <div class="equalizer" id="equalizer" style="display: none;">
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                    <div class="bar"></div>
-                                </div>
-                                <span class="text-xs font-medium" id="statusText" style="color: var(--red-live); text-shadow: 0 0 10px rgba(255, 0, 64, 0.8);">● AO VIVO</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hidden lg:block">
-                        <div class="glass-card px-4 py-2">
-                            <span class="text-sm text-white font-medium" id="nowPlaying">♪ Tocando agora: Sua música favorita</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-3">
-                    <button id="playBtn" class="btn-primary text-white px-5 py-2.5 font-semibold flex items-center space-x-2 text-sm">
-                        <i class="fas fa-play"></i>
-                        <span class="hidden sm:inline">Ouvir Ao Vivo</span>
-                    </button>
-                    <div class="hidden md:flex items-center space-x-3 glass-card px-4 py-2">
-                        <i class="fas fa-volume-up text-white text-sm"></i>
-                        <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider w-16">
+    <div class="site-container">
+        <!-- Topo -->
+        <header class="main-header">
+            <div class="top-bar">
+                <div class="container">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Conteúdo Principal -->
-    <div class="content-margin">
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 gradient-dark"></div>
-            <div class="absolute inset-0">
-                <!-- Animated Background Elements -->
-                <div class="absolute top-20 left-20 w-64 h-64 gradient-primary opacity-15 rounded-full blur-3xl floating-animation"></div>
-                <div class="absolute top-40 right-32 w-48 h-48 gradient-accent opacity-12 rounded-full blur-3xl floating-animation" style="animation-delay: 2s;"></div>
-                <div class="absolute bottom-32 left-1/4 w-80 h-80 gradient-secondary opacity-10 rounded-full blur-3xl floating-animation" style="animation-delay: 4s;"></div>
-                <div class="absolute top-1/2 right-1/4 w-32 h-32 gradient-primary opacity-8 rounded-full blur-2xl floating-animation" style="animation-delay: 6s;"></div>
-                
-                <!-- Grid Pattern -->
-                <div class="absolute inset-0 opacity-5">
-                    <div class="grid grid-cols-12 gap-4 h-full">
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
-                        <div class="border-r border-white opacity-20"></div>
+            <div class="logo-nav-area">
+                <div class="container">
+                    <div class="logo">
+                        <img src="https://i.imgur.com/your-logo.png" alt="Ouveem Logo"> <!-- Placeholder -->
+                        <h1>OUVEEM</h1>
                     </div>
+                    <nav class="main-nav">
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">QUEM SOMOS</a></li>
+                            <li><a href="#">ANUNCIE</a></li>
+                            <li><a href="#">NOTÍCIAS</a></li>
+                            <li><a href="#">FOTOS</a></li>
+                            <li><a href="#">VÍDEOS</a></li>
+                            <li><a href="#">CONTATO</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            
-            <div class="relative z-10 container mx-auto px-6 text-center">
-                <div class="mb-12">
-                    <div class="inline-block relative">
-                        <div class="w-24 h-24 glass-card flex items-center justify-center mb-8 mx-auto shadow-2xl">
-                            <i class="fas fa-broadcast-tower text-4xl text-gradient"></i>
-                        </div>
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full pulse-ring"></div>
+            <div class="live-player-bar">
+                <div class="container">
+                    <div class="radio-info">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <span>Rádio Ouveem</span>
                     </div>
-                </div>
-                
-                <h1 class="text-6xl md:text-7xl font-black mb-6 text-white leading-tight">
-                    Web<span class="text-gradient neon-text">Rádio</span> FM
-                </h1>
-                <p class="text-xl md:text-2xl mb-6 text-white opacity-90 font-medium">Sua música, sua vida, sua rádio favorita</p>
-                <p class="text-base md:text-lg mb-12 text-white opacity-70 max-w-2xl mx-auto leading-relaxed">
-                    Transmitindo 24 horas por dia os melhores sucessos, notícias e entretenimento para você
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
-                    <button onclick="openModal('musicRequestModal')" class="btn-secondary text-white px-8 py-4 font-semibold flex items-center space-x-3 group">
-                        <i class="fas fa-music group-hover:scale-110 transition-transform"></i>
-                        <span>Pedir Música</span>
-                    </button>
-                    <button onclick="openModal('messageModal')" class="btn-secondary text-white px-8 py-4 font-semibold flex items-center space-x-3 group">
-                        <i class="fas fa-comment group-hover:scale-110 transition-transform"></i>
-                        <span>Deixar Recado</span>
-                    </button>
-                </div>
-                
-                <!-- Stats -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <div class="glass-card p-8 text-center card-hover">
-                        <div class="text-4xl font-black text-gradient mb-3">24/7</div>
-                        <div class="text-white opacity-80 font-medium">Transmissão</div>
-                    </div>
-                    <div class="glass-card p-8 text-center card-hover">
-                        <div class="text-4xl font-black text-gradient mb-3">10K+</div>
-                        <div class="text-white opacity-80 font-medium">Ouvintes</div>
-                    </div>
-                    <div class="glass-card p-8 text-center card-hover">
-                        <div class="text-4xl font-black text-gradient mb-3">5★</div>
-                        <div class="text-white opacity-80 font-medium">Avaliação</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Navegação -->
-        <nav class="glass-card sticky top-20 z-50 mx-6 mb-8">
-            <div class="container mx-auto px-6">
-                <div class="flex space-x-2 overflow-x-auto py-4">
-                    <button onclick="showSection('home')" class="nav-item active py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-home"></i>
-                        <span>Início</span>
-                    </button>
-                    <button onclick="showSection('news')" class="nav-item py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-newspaper"></i>
-                        <span>Notícias</span>
-                    </button>
-                    <button onclick="showSection('blog')" class="nav-item py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-blog"></i>
-                        <span>Blog</span>
-                    </button>
-                    <button onclick="showSection('schedule')" class="nav-item py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-calendar"></i>
-                        <span>Programação</span>
-                    </button>
-                    <button onclick="showSection('events')" class="nav-item py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-star"></i>
-                        <span>Eventos</span>
-                    </button>
-                    <button onclick="showSection('gallery')" class="nav-item py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-images"></i>
-                        <span>Galeria</span>
-                    </button>
-                    <button onclick="showSection('top10')" class="nav-item py-3 px-5 text-white font-medium whitespace-nowrap text-sm flex items-center space-x-2">
-                        <i class="fas fa-trophy"></i>
-                        <span>Top 10</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Seção Início -->
-        <section id="home" class="section-content py-16">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Coluna Principal -->
-                    <div class="lg:col-span-2 space-y-8">
-                        <!-- Últimas Notícias -->
-                        <div class="glass-card p-8">
-                            <div class="flex items-center space-x-4 mb-8">
-                                <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-newspaper text-white text-lg"></i>
-                                </div>
-                                <h2 class="text-2xl font-bold text-white">Últimas Notícias</h2>
-                            </div>
-                            <div class="space-y-4">
-                                <article class="news-card p-6 card-hover cursor-pointer" onclick="openNewsDetail('news1')">
-                                    <div class="flex space-x-4">
-                                        <div class="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
-                                            <i class="fas fa-music text-white"></i>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <h3 class="font-semibold text-white mb-2 text-base leading-tight">Nova programação musical estreia na próxima semana</h3>
-                                            <p class="text-gray-400 text-sm mb-3 line-clamp-2">Confira os novos horários e apresentadores que chegam para revolucionar sua experiência musical...</p>
-                                            <div class="flex items-center space-x-2 text-xs">
-                                                <span class="text-gradient font-medium">Há 2 horas</span>
-                                                <span class="text-gray-600">•</span>
-                                                <span class="text-gray-500">Por Admin</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                                
-                                <article class="news-card p-6 card-hover cursor-pointer" onclick="openNewsDetail('news2')">
-                                    <div class="flex space-x-4">
-                                        <div class="w-16 h-16 gradient-accent rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
-                                            <i class="fas fa-microphone text-white"></i>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <h3 class="font-semibold text-white mb-2 text-base leading-tight">Entrevista exclusiva com artista local</h3>
-                                            <p class="text-gray-400 text-sm mb-3 line-clamp-2">Conversamos com o cantor que está fazendo sucesso na região sobre seus próximos projetos...</p>
-                                            <div class="flex items-center space-x-2 text-xs">
-                                                <span class="text-gradient font-medium">Há 5 horas</span>
-                                                <span class="text-gray-600">•</span>
-                                                <span class="text-gray-500">Por Admin</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-
-                        <!-- Mural de Recados -->
-                        <div class="glass-card p-8">
-                            <div class="flex items-center space-x-4 mb-8">
-                                <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-comments text-white text-lg"></i>
-                                </div>
-                                <h2 class="text-2xl font-bold text-white">Mural de Recados</h2>
-                            </div>
-                            <div id="messagesWall" class="space-y-4 mb-8">
-                                <div class="news-card p-4">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-10 h-10 gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                                            <span class="text-white font-semibold text-sm">M</span>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center space-x-2 mb-1">
-                                                <span class="font-semibold text-white text-sm">Maria Silva</span>
-                                                <span class="text-xs text-gray-500">há 10 min</span>
-                                            </div>
-                                            <p class="text-gray-400 text-sm">Adoro essa rádio! Sempre tocando as melhores músicas 🎵</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="news-card p-4">
-                                    <div class="flex items-start space-x-3">
-                                        <div class="w-10 h-10 gradient-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                            <span class="text-white font-semibold text-sm">J</span>
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <div class="flex items-center space-x-2 mb-1">
-                                                <span class="font-semibold text-white text-sm">João Santos</span>
-                                                <span class="text-xs text-gray-500">há 1 hora</span>
-                                            </div>
-                                            <p class="text-gray-400 text-sm">Parabéns pela qualidade da programação! 👏</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button onclick="openModal('messageModal')" class="w-full btn-primary text-white py-3 font-semibold flex items-center justify-center space-x-2 text-sm">
-                                <i class="fas fa-plus"></i>
-                                <span>Deixar Recado</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar -->
-                    <div class="space-y-6">
-                        <!-- Enquete -->
-                        <div class="glass-card p-6">
-                            <div class="flex items-center space-x-3 mb-6">
-                                <div class="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-poll text-white"></i>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Enquete da Semana</h3>
-                            </div>
-                            <p class="text-gray-400 mb-6 text-sm">Qual seu estilo musical favorito?</p>
-                            <div class="space-y-3">
-                                <label class="flex items-center justify-between cursor-pointer p-3 rounded-lg hover:bg-white hover:bg-opacity-5 transition-all">
-                                    <div class="flex items-center space-x-3">
-                                        <input type="radio" name="poll" value="rock" class="text-blue-500">
-                                        <span class="text-white text-sm">Rock</span>
-                                    </div>
-                                    <span class="text-sm text-gradient font-semibold">35%</span>
-                                </label>
-                                <label class="flex items-center justify-between cursor-pointer p-3 rounded-lg hover:bg-white hover:bg-opacity-5 transition-all">
-                                    <div class="flex items-center space-x-3">
-                                        <input type="radio" name="poll" value="pop" class="text-blue-500">
-                                        <span class="text-white text-sm">Pop</span>
-                                    </div>
-                                    <span class="text-sm text-gradient font-semibold">28%</span>
-                                </label>
-                                <label class="flex items-center justify-between cursor-pointer p-3 rounded-lg hover:bg-white hover:bg-opacity-5 transition-all">
-                                    <div class="flex items-center space-x-3">
-                                        <input type="radio" name="poll" value="sertanejo" class="text-blue-500">
-                                        <span class="text-white text-sm">Sertanejo</span>
-                                    </div>
-                                    <span class="text-sm text-gradient font-semibold">22%</span>
-                                </label>
-                                <label class="flex items-center justify-between cursor-pointer p-3 rounded-lg hover:bg-white hover:bg-opacity-5 transition-all">
-                                    <div class="flex items-center space-x-3">
-                                        <input type="radio" name="poll" value="eletronica" class="text-blue-500">
-                                        <span class="text-white text-sm">Eletrônica</span>
-                                    </div>
-                                    <span class="text-sm text-gradient font-semibold">15%</span>
-                                </label>
-                            </div>
-                            <button onclick="votePoll()" class="w-full mt-6 btn-primary text-white py-3 font-semibold text-sm">
-                                Votar Agora
-                            </button>
-                        </div>
-
-                        <!-- Redes Sociais -->
-                        <div class="glass-card p-6">
-                            <div class="flex items-center space-x-3 mb-6">
-                                <div class="w-10 h-10 gradient-accent rounded-xl flex items-center justify-center shadow-lg">
-                                    <i class="fas fa-share-alt text-white"></i>
-                                </div>
-                                <h3 class="text-lg font-bold text-white">Siga-nos</h3>
-                            </div>
-                            <div class="space-y-3">
-                                <a href="#" class="social-btn flex items-center space-x-3 p-3 gradient-primary text-white font-medium text-sm neon-glow">
-                                    <i class="fab fa-facebook-f"></i>
-                                    <span>Facebook</span>
-                                </a>
-                                <a href="#" class="social-btn flex items-center space-x-3 p-3 gradient-accent text-white font-medium text-sm">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
-                                </a>
-                                <a href="#" class="social-btn flex items-center space-x-3 p-3 glass-card text-white font-medium text-sm border border-green-500 border-opacity-30">
-                                    <i class="fab fa-whatsapp" style="color: var(--green-primary);"></i>
-                                    <span>WhatsApp</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- App Download -->
-                        <div class="gradient-primary p-6 text-white">
-                            <div class="text-center mb-6">
-                                <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <i class="fas fa-mobile-alt text-white text-xl"></i>
-                                </div>
-                                <h3 class="text-lg font-bold mb-2">Baixe nosso App</h3>
-                                <p class="opacity-90 text-sm">Ouça onde estiver com nosso aplicativo oficial</p>
-                            </div>
-                            <div class="space-y-3">
-                                <a href="#" class="flex items-center space-x-3 bg-black bg-opacity-20 p-3 rounded-xl hover:bg-opacity-30 transition-colors">
-                                    <i class="fab fa-google-play text-xl"></i>
-                                    <div>
-                                        <div class="text-xs opacity-75">Disponível no</div>
-                                        <div class="font-semibold text-sm">Google Play</div>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex items-center space-x-3 bg-black bg-opacity-20 p-3 rounded-xl hover:bg-opacity-30 transition-colors">
-                                    <i class="fab fa-apple text-xl"></i>
-                                    <div>
-                                        <div class="text-xs opacity-75">Baixar na</div>
-                                        <div class="font-semibold text-sm">App Store</div>
-                                    </div>
-                                </a>
-                            </div>
+                    <div id="player-container">
+                        <button id="playBtn"><i class="fas fa-play"></i></button>
+                        <span id="live-status">AO VIVO</span>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-down"></i>
+                            <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                            <i class="fas fa-volume-up"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <!-- Seção Notícias -->
-        <section id="news" class="section-content py-12 hidden">
-            <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center mb-8">
-                    <h1 class="text-3xl font-bold text-gray-800">Portal de Notícias</h1>
-                    <div class="flex space-x-2">
-                        <button onclick="filterNews('todas')" class="filter-btn bg-blue-600 text-white px-4 py-2 rounded-lg">Todas</button>
-                        <button onclick="filterNews('musica')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Música</button>
-                        <button onclick="filterNews('eventos')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Eventos</button>
-                        <button onclick="filterNews('entrevistas')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300">Entrevistas</button>
+        <!-- Conteúdo Principal -->
+        <main class="main-content container">
+            <div class="content-area">
+                <!-- Banner Principal -->
+                <section class="main-banner" style="background-image: url('https://i.imgur.com/banner-image.jpg');">
+                    <div class="banner-caption">
+                        <h2>OU SIMPLESMENTE ADICIONE UMA FOTO E ESCREVA SOBRE ELA</h2>
                     </div>
-                </div>
+                </section>
+
+                <section class="ad-placeholder" style="background-image: url('https://i.imgur.com/ad-banner.png');">
+                    <!-- Anúncio -->
+                </section>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="newsGrid">
-                    <article class="news-item bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-category="musica">
-                        <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                            <i class="fas fa-music text-white text-4xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Música</span>
-                            <h3 class="text-xl font-bold mt-3 mb-2">Nova programação musical</h3>
-                            <p class="text-gray-600 mb-4">Confira os novos horários e apresentadores que chegam para revolucionar sua experiência musical na WebRádio FM.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-500">Há 2 horas</span>
-                                <button onclick="openNewsDetail('news1')" class="text-blue-600 hover:text-blue-800">Ler mais</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-item bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-category="entrevistas">
-                        <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                            <i class="fas fa-microphone text-white text-4xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Entrevista</span>
-                            <h3 class="text-xl font-bold mt-3 mb-2">Entrevista exclusiva</h3>
-                            <p class="text-gray-600 mb-4">Conversamos com o cantor que está fazendo sucesso na região sobre seus próximos projetos e inspirações musicais.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-500">Há 5 horas</span>
-                                <button onclick="openNewsDetail('news2')" class="text-blue-600 hover:text-blue-800">Ler mais</button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="news-item bg-white rounded-lg shadow-lg overflow-hidden card-hover" data-category="eventos">
-                        <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
-                            <i class="fas fa-calendar text-white text-4xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Evento</span>
-                            <h3 class="text-xl font-bold mt-3 mb-2">Festival de Música</h3>
-                            <p class="text-gray-600 mb-4">Grande festival de música acontece no próximo fim de semana com artistas locais e nacionais. Não perca!</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-sm text-gray-500">Há 1 dia</span>
-                                <button onclick="openNewsDetail('news3')" class="text-blue-600 hover:text-blue-800">Ler mais</button>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Blog -->
-        <section id="blog" class="section-content py-12 hidden">
-            <div class="container mx-auto px-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Blog</h1>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 space-y-8">
-                        <article class="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="h-64 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                                <i class="fas fa-headphones text-white text-5xl"></i>
-                            </div>
-                            <div class="p-6">
-                                <h2 class="text-2xl font-bold mb-4">A evolução da música digital</h2>
-                                <p class="text-gray-600 mb-4">Explore como a tecnologia transformou a forma como consumimos música, desde os primeiros MP3s até os serviços de streaming atuais...</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                            <span class="text-white text-sm font-semibold">A</span>
-                                        </div>
-                                        <span class="text-sm text-gray-600">Admin • Há 3 dias</span>
-                                    </div>
-                                    <button onclick="openBlogPost('post1')" class="text-blue-600 hover:text-blue-800">Ler mais</button>
-                                </div>
-                                
-                                <!-- Sistema de Comentários -->
-                                <div class="mt-6 pt-6 border-t">
-                                    <h4 class="font-semibold mb-4">Comentários (2)</h4>
-                                    <div class="space-y-4">
-                                        <div class="bg-gray-50 p-4 rounded-lg">
-                                            <div class="flex items-start space-x-3">
-                                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                                                    <span class="text-white text-sm font-semibold">L</span>
-                                                </div>
-                                                <div class="flex-1">
-                                                    <div class="flex items-center space-x-2 mb-1">
-                                                        <span class="font-semibold text-gray-800">Lucas</span>
-                                                        <span class="text-xs text-gray-500">há 1 dia</span>
-                                                    </div>
-                                                    <p class="text-gray-700">Excelente artigo! Realmente a música mudou muito.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-4">
-                                        <textarea placeholder="Deixe seu comentário..." class="w-full p-3 border rounded-lg resize-none" rows="3"></textarea>
-                                        <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                            Comentar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Últimas Notícias -->
+                <section class="content-block">
+                    <div class="block-header"><h2>ÚLTIMAS NOTÍCIAS</h2></div>
+                    <div class="news-grid">
+                        <article class="news-item main-news">
+                            <img src="https://i.imgur.com/news1.jpg" alt="News">
+                            <h3>Título da notícia principal que ocupa mais espaço</h3>
+                        </article>
+                        <article class="news-item">
+                            <img src="https://i.imgur.com/news2.jpg" alt="News">
+                            <h3>Título da notícia secundária</h3>
+                        </article>
+                        <article class="news-item">
+                            <img src="https://i.imgur.com/news3.jpg" alt="News">
+                            <h3>Outra notícia importante</h3>
                         </article>
                     </div>
-                    
-                    <div class="space-y-6">
-                        <div class="bg-white rounded-lg shadow-lg p-6">
-                            <h3 class="text-xl font-bold mb-4">Posts Recentes</h3>
-                            <div class="space-y-4">
-                                <a href="#" class="block hover:text-blue-600">
-                                    <h4 class="font-semibold">Como escolher o fone de ouvido ideal</h4>
-                                    <span class="text-sm text-gray-500">Há 1 semana</span>
-                                </a>
-                                <a href="#" class="block hover:text-blue-600">
-                                    <h4 class="font-semibold">Tendências musicais de 2024</h4>
-                                    <span class="text-sm text-gray-500">Há 2 semanas</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção Programação -->
-        <section id="schedule" class="section-content py-12 hidden">
-            <div class="container mx-auto px-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Grade de Programação</h1>
+                </section>
                 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="grid grid-cols-8 gap-0">
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Horário</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Segunda</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Terça</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Quarta</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Quinta</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Sexta</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Sábado</div>
-                        <div class="bg-gray-100 p-4 font-semibold text-center">Domingo</div>
-                        
-                        <!-- 06:00 -->
-                        <div class="p-4 border-b border-r font-semibold">06:00</div>
-                        <div class="p-4 border-b border-r bg-blue-50">
-                            <div class="font-semibold text-blue-800">Bom Dia Música</div>
-                            <div class="text-sm text-gray-600">João Silva</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-blue-50">
-                            <div class="font-semibold text-blue-800">Bom Dia Música</div>
-                            <div class="text-sm text-gray-600">João Silva</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-blue-50">
-                            <div class="font-semibold text-blue-800">Bom Dia Música</div>
-                            <div class="text-sm text-gray-600">João Silva</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-blue-50">
-                            <div class="font-semibold text-blue-800">Bom Dia Música</div>
-                            <div class="text-sm text-gray-600">João Silva</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-blue-50">
-                            <div class="font-semibold text-blue-800">Bom Dia Música</div>
-                            <div class="text-sm text-gray-600">João Silva</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-green-50">
-                            <div class="font-semibold text-green-800">Weekend Mix</div>
-                            <div class="text-sm text-gray-600">DJ Carlos</div>
-                        </div>
-                        <div class="p-4 border-b bg-green-50">
-                            <div class="font-semibold text-green-800">Weekend Mix</div>
-                            <div class="text-sm text-gray-600">DJ Carlos</div>
-                        </div>
-                        
-                        <!-- 12:00 -->
-                        <div class="p-4 border-b border-r font-semibold">12:00</div>
-                        <div class="p-4 border-b border-r bg-yellow-50">
-                            <div class="font-semibold text-yellow-800">Hora do Almoço</div>
-                            <div class="text-sm text-gray-600">Maria Santos</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-yellow-50">
-                            <div class="font-semibold text-yellow-800">Hora do Almoço</div>
-                            <div class="text-sm text-gray-600">Maria Santos</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-yellow-50">
-                            <div class="font-semibold text-yellow-800">Hora do Almoço</div>
-                            <div class="text-sm text-gray-600">Maria Santos</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-yellow-50">
-                            <div class="font-semibold text-yellow-800">Hora do Almoço</div>
-                            <div class="text-sm text-gray-600">Maria Santos</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-yellow-50">
-                            <div class="font-semibold text-yellow-800">Hora do Almoço</div>
-                            <div class="text-sm text-gray-600">Maria Santos</div>
-                        </div>
-                        <div class="p-4 border-b border-r bg-purple-50">
-                            <div class="font-semibold text-purple-800">Sábado Total</div>
-                            <div class="text-sm text-gray-600">Pedro Lima</div>
-                        </div>
-                        <div class="p-4 border-b bg-purple-50">
-                            <div class="font-semibold text-purple-800">Domingo Especial</div>
-                            <div class="text-sm text-gray-600">Ana Costa</div>
-                        </div>
-                        
-                        <!-- 18:00 -->
-                        <div class="p-4 border-r font-semibold">18:00</div>
-                        <div class="p-4 border-r bg-red-50">
-                            <div class="font-semibold text-red-800">Drive Time</div>
-                            <div class="text-sm text-gray-600">Roberto Alves</div>
-                        </div>
-                        <div class="p-4 border-r bg-red-50">
-                            <div class="font-semibold text-red-800">Drive Time</div>
-                            <div class="text-sm text-gray-600">Roberto Alves</div>
-                        </div>
-                        <div class="p-4 border-r bg-red-50">
-                            <div class="font-semibold text-red-800">Drive Time</div>
-                            <div class="text-sm text-gray-600">Roberto Alves</div>
-                        </div>
-                        <div class="p-4 border-r bg-red-50">
-                            <div class="font-semibold text-red-800">Drive Time</div>
-                            <div class="text-sm text-gray-600">Roberto Alves</div>
-                        </div>
-                        <div class="p-4 border-r bg-red-50">
-                            <div class="font-semibold text-red-800">Drive Time</div>
-                            <div class="text-sm text-gray-600">Roberto Alves</div>
-                        </div>
-                        <div class="p-4 border-r bg-indigo-50">
-                            <div class="font-semibold text-indigo-800">Noite Especial</div>
-                            <div class="text-sm text-gray-600">DJ Night</div>
-                        </div>
-                        <div class="p-4 bg-indigo-50">
-                            <div class="font-semibold text-indigo-800">Noite Especial</div>
-                            <div class="text-sm text-gray-600">DJ Night</div>
-                        </div>
+                <!-- Vídeo em Destaque -->
+                <section class="content-block">
+                    <div class="block-header"><h2>VÍDEO EM DESTAQUE</h2></div>
+                    <div class="video-feature">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
                     </div>
-                </div>
+                </section>
+
+                 <!-- Últimas do Blog -->
+                 <section class="content-block">
+                    <div class="block-header"><h2>ÚLTIMAS DO BLOG</h2></div>
+                    <div class="blog-grid">
+                        <article class="blog-post">
+                            <img src="https://i.imgur.com/blog1.jpg" alt="Blog Post">
+                            <h4>Título do Post do Blog</h4>
+                            <p>Um breve resumo do conteúdo do post, convidando o leitor a saber mais...</p>
+                        </article>
+                        <article class="blog-post">
+                            <img src="https://i.imgur.com/blog2.jpg" alt="Blog Post">
+                            <h4>Outro Post Interessante</h4>
+                            <p>Mais um resumo sobre um tópico relevante abordado no blog da rádio...</p>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Galeria de Exemplo -->
+                <section class="content-block">
+                    <div class="block-header"><h2>GALERIA DE EXEMPLO</h2></div>
+                    <div class="gallery-grid">
+                        <img src="https://i.imgur.com/gallery1.jpg" alt="Gallery Image">
+                        <img src="https://i.imgur.com/gallery2.jpg" alt="Gallery Image">
+                        <img src="https://i.imgur.com/gallery3.jpg" alt="Gallery Image">
+                        <img src="https://i.imgur.com/gallery4.jpg" alt="Gallery Image">
+                        <img src="https://i.imgur.com/gallery5.jpg" alt="Gallery Image">
+                        <img src="https://i.imgur.com/gallery6.jpg" alt="Gallery Image">
+                    </div>
+                </section>
+
             </div>
-        </section>
-
-        <!-- Seção Eventos -->
-        <section id="events" class="section-content py-12 hidden">
-            <div class="container mx-auto px-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Eventos</h1>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                        <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
-                            <i class="fas fa-music text-white text-4xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center space-x-2 mb-3">
-                                <i class="fas fa-calendar text-blue-600"></i>
-                                <span class="text-sm text-gray-600">15 de Dezembro, 2024</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">Festival de Música</h3>
-                            <p class="text-gray-600 mb-4">Grande festival com artistas locais e nacionais. Uma noite inesquecível de música e diversão.</p>
-                            <div class="flex items-center space-x-2 mb-4">
-                                <i class="fas fa-map-marker-alt text-red-500"></i>
-                                <span class="text-sm text-gray-600">Centro de Eventos - Cidade</span>
-                            </div>
-                            <button onclick="openEventDetail('event1')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                        <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
-                            <i class="fas fa-microphone text-white text-4xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center space-x-2 mb-3">
-                                <i class="fas fa-calendar text-blue-600"></i>
-                                <span class="text-sm text-gray-600">22 de Dezembro, 2024</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">Show Acústico</h3>
-                            <p class="text-gray-600 mb-4">Apresentação intimista com artistas locais em formato acústico. Uma experiência única e especial.</p>
-                            <div class="flex items-center space-x-2 mb-4">
-                                <i class="fas fa-map-marker-alt text-red-500"></i>
-                                <span class="text-sm text-gray-600">Café Cultural - Centro</span>
-                            </div>
-                            <button onclick="openEventDetail('event2')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Ver Detalhes
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                        <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                            <i class="fas fa-star text-white text-4xl"></i>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center space-x-2 mb-3">
-                                <i class="fas fa-calendar text-blue-600"></i>
-                                <span class="text-sm text-gray-600">31 de Dezembro, 2024</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">Réveillon 2025</h3>
-                            <p class="text-gray-600 mb-4">Celebre a chegada do novo ano com muita música, shows e fogos de artifício.</p>
-                            <div class="flex items-center space-x-2 mb-4">
-                                <i class="fas fa-map-marker-alt text-red-500"></i>
-                                <span class="text-sm text-gray-600">Praça Central - Cidade</span>
-                            </div>
-                            <button onclick="openEventDetail('event3')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Ver Detalhes
-                            </button>
-                        </div>
+            <aside class="sidebar">
+                <div class="widget">
+                    <div class="widget-header"><h3>PEÇA SUA MÚSICA</h3></div>
+                    <div class="widget-content">
+                        <form id="musicRequestForm">
+                            <input type="text" placeholder="Seu Nome">
+                            <input type="text" placeholder="Sua Música">
+                            <button type="submit">ENVIAR</button>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Seção Galeria -->
-        <section id="gallery" class="section-content py-12 hidden">
-            <div class="container mx-auto px-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Galeria</h1>
-                
-                <div class="flex space-x-4 mb-8">
-                    <button onclick="showGalleryTab('photos')" class="gallery-tab bg-blue-600 text-white px-6 py-2 rounded-lg">Fotos</button>
-                    <button onclick="showGalleryTab('videos')" class="gallery-tab bg-gray-200 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-300">Vídeos</button>
-                </div>
-                
-                <!-- Galeria de Fotos -->
-                <div id="photosGallery" class="gallery-content">
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <div class="aspect-square bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="openPhotoModal('photo1')">
-                            <i class="fas fa-image text-white text-3xl"></i>
-                        </div>
-                        <div class="aspect-square bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="openPhotoModal('photo2')">
-                            <i class="fas fa-camera text-white text-3xl"></i>
-                        </div>
-                        <div class="aspect-square bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="openPhotoModal('photo3')">
-                            <i class="fas fa-music text-white text-3xl"></i>
-                        </div>
-                        <div class="aspect-square bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="openPhotoModal('photo4')">
-                            <i class="fas fa-microphone text-white text-3xl"></i>
-                        </div>
-                        <div class="aspect-square bg-gradient-to-br from-indigo-400 to-purple-500 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="openPhotoModal('photo5')">
-                            <i class="fas fa-headphones text-white text-3xl"></i>
-                        </div>
-                        <div class="aspect-square bg-gradient-to-br from-pink-400 to-red-500 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105 transition-transform" onclick="openPhotoModal('photo6')">
-                            <i class="fas fa-guitar text-white text-3xl"></i>
-                        </div>
+                <div class="widget">
+                    <div class="widget-header"><h3>VÍDEO EM DESTAQUE</h3></div>
+                    <div class="widget-content">
+                        <iframe src="https://www.youtube.com/embed/a_FL_a42A4w" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
-                
-                <!-- Galeria de Vídeos -->
-                <div id="videosGallery" class="gallery-content hidden">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="aspect-video bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center">
-                                <i class="fas fa-play text-white text-4xl"></i>
-                            </div>
-                            <div class="p-4">
-                                <h3 class="font-semibold mb-2">Entrevista com Artista Local</h3>
-                                <p class="text-gray-600 text-sm">Conversa exclusiva sobre música e carreira</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                                <i class="fas fa-play text-white text-4xl"></i>
-                            </div>
-                            <div class="p-4">
-                                <h3 class="font-semibold mb-2">Bastidores do Festival</h3>
-                                <p class="text-gray-600 text-sm">Veja como foi a preparação do evento</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="aspect-video bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
-                                <i class="fas fa-play text-white text-4xl"></i>
-                            </div>
-                            <div class="p-4">
-                                <h3 class="font-semibold mb-2">Show Acústico Especial</h3>
-                                <p class="text-gray-600 text-sm">Apresentação intimista no estúdio</p>
-                            </div>
-                        </div>
+                <div class="widget">
+                    <div class="widget-header"><h3>ENQUETE</h3></div>
+                    <div class="widget-content">
+                        <form id="pollForm">
+                            <p>Qual seu estilo de rock favorito?</p>
+                            <label><input type="radio" name="poll" value="classic"> Clássico</label>
+                            <label><input type="radio" name="poll" value="hard"> Hard Rock</label>
+                            <label><input type="radio" name="poll" value="metal"> Metal</label>
+                            <button type="submit">VOTAR</button>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Seção Top 10 -->
-        <section id="top10" class="section-content py-12 hidden">
-            <div class="container mx-auto px-4">
-                <h1 class="text-3xl font-bold text-gray-800 mb-8">Top 10 Músicas</h1>
-                
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6">
-                        <h2 class="text-2xl font-bold">As Mais Tocadas da Semana</h2>
-                        <p class="opacity-90">Ranking atualizado em tempo real</p>
-                    </div>
-                    
-                    <div class="divide-y">
-                        <div class="p-4 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-xl">1</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Música Exemplo 1</h3>
-                                    <p class="text-gray-600 text-sm">Artista Exemplo</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                    <span class="text-sm text-gray-500">3:45</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-4 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-xl">2</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Música Exemplo 2</h3>
-                                    <p class="text-gray-600 text-sm">Artista Exemplo</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                    <span class="text-sm text-gray-500">4:12</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-4 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-xl">3</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Música Exemplo 3</h3>
-                                    <p class="text-gray-600 text-sm">Artista Exemplo</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                    <span class="text-sm text-gray-500">3:28</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Continuar com posições 4-10 -->
-                        <div class="p-4 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-xl">4</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Música Exemplo 4</h3>
-                                    <p class="text-gray-600 text-sm">Artista Exemplo</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                    <span class="text-sm text-gray-500">3:55</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-4 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-xl">5</span>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="font-semibold">Música Exemplo 5</h3>
-                                    <p class="text-gray-600 text-sm">Artista Exemplo</p>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-blue-600 hover:text-blue-800">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                    <span class="text-sm text-gray-500">4:03</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Modais -->
-    <!-- Modal Pedido de Música -->
-    <div id="musicRequestModal" class="modal">
-        <div class="glass-card p-8 max-w-md w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-music text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white">Pedir Música</h3>
-                </div>
-                <button onclick="closeModal('musicRequestModal')" class="text-gray-400 hover:text-white transition-colors p-2">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form onsubmit="submitMusicRequest(event)">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-white">Seu Nome</label>
-                        <input type="text" required class="form-input w-full p-3" placeholder="Digite seu nome">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-white">Música</label>
-                        <input type="text" required class="form-input w-full p-3" placeholder="Nome da música">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-white">Artista</label>
-                        <input type="text" required class="form-input w-full p-3" placeholder="Nome do artista">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-white">Mensagem (opcional)</label>
-                        <textarea class="form-input w-full p-3 resize-none" rows="3" placeholder="Deixe uma mensagem..."></textarea>
-                    </div>
-                </div>
-                <div class="flex space-x-3 mt-6">
-                    <button type="button" onclick="closeModal('musicRequestModal')" class="flex-1 btn-secondary text-white py-3 font-medium">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="flex-1 btn-primary text-white py-3 font-medium">
-                        Enviar Pedido
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal Recado -->
-    <div id="messageModal" class="modal">
-        <div class="glass-card p-8 max-w-md w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 gradient-accent rounded-xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-comment text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white">Deixar Recado</h3>
-                </div>
-                <button onclick="closeModal('messageModal')" class="text-gray-400 hover:text-white transition-colors p-2">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <form onsubmit="submitMessage(event)">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-white">Seu Nome</label>
-                        <input type="text" required class="form-input w-full p-3" placeholder="Digite seu nome">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2 text-white">Mensagem</label>
-                        <textarea required class="form-input w-full p-3 resize-none" rows="4" placeholder="Escreva sua mensagem..."></textarea>
-                    </div>
-                </div>
-                <div class="flex space-x-3 mt-6">
-                    <button type="button" onclick="closeModal('messageModal')" class="flex-1 btn-secondary text-white py-3 font-medium">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="flex-1 btn-primary text-white py-3 font-medium">
-                        Publicar Recado
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="gradient-dark py-16 border-t border-orange-500 border-opacity-20" style="background: var(--darker-gradient);">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 gradient-primary rounded-full flex items-center justify-center neon-glow">
-                            <i class="fas fa-radio text-white text-lg"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gradient">WebRádio FM</h3>
-                    </div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">Sua música, sua vida, sua rádio favorita. Conectando pessoas através da música há mais de 10 anos.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 glass-effect rounded-full flex items-center justify-center text-white hover:bg-white hover:bg-opacity-20 transition-all">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass-effect rounded-full flex items-center justify-center text-white hover:bg-white hover:bg-opacity-20 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass-effect rounded-full flex items-center justify-center text-white hover:bg-white hover:bg-opacity-20 transition-all">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass-effect rounded-full flex items-center justify-center text-white hover:bg-white hover:bg-opacity-20 transition-all">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-6 text-white text-lg">Links Rápidos</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-gradient transition-all flex items-center space-x-2"><i class="fas fa-chevron-right text-xs"></i><span>Início</span></a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-gradient transition-all flex items-center space-x-2"><i class="fas fa-chevron-right text-xs"></i><span>Notícias</span></a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-gradient transition-all flex items-center space-x-2"><i class="fas fa-chevron-right text-xs"></i><span>Programação</span></a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-gradient transition-all flex items-center space-x-2"><i class="fas fa-chevron-right text-xs"></i><span>Eventos</span></a></li>
+                <div class="widget">
+                    <div class="widget-header"><h3>TOP 10</h3></div>
+                    <ul class="widget-content top-list">
+                        <li><span>1</span> Artista - Música 1</li>
+                        <li><span>2</span> Artista - Música 2</li>
+                        <li><span>3</span> Artista - Música 3</li>
+                        <li><span>4</span> Artista - Música 4</li>
+                        <li><span>5</span> Artista - Música 5</li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h4 class="font-bold mb-6 text-white text-lg">Contato</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-center space-x-3 text-gray-300">
-                            <div class="w-8 h-8 gradient-primary rounded-full flex items-center justify-center">
-                                <i class="fas fa-phone text-white text-xs"></i>
-                            </div>
-                            <span>(11) 1234-5678</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-gray-300">
-                            <div class="w-8 h-8 gradient-primary rounded-full flex items-center justify-center">
-                                <i class="fas fa-envelope text-white text-xs"></i>
-                            </div>
-                            <span>contato@webradio.com</span>
-                        </li>
-                        <li class="flex items-center space-x-3 text-gray-300">
-                            <div class="w-8 h-8 gradient-primary rounded-full flex items-center justify-center">
-                                <i class="fas fa-map-marker-alt text-white text-xs"></i>
-                            </div>
-                            <span>São Paulo, SP</span>
-                        </li>
-                    </ul>
+            </aside>
+        </main>
+
+        <section class="app-banner">
+            <div class="container">
+                <img src="https://i.imgur.com/app-promo.png" alt="App Oficial">
+                <div class="app-links">
+                    <a href="#"><img src="https://i.imgur.com/google-play.png" alt="Google Play"></a>
+                    <a href="#"><img src="https://i.imgur.com/app-store.png" alt="App Store"></a>
                 </div>
-                
-                <div>
-                    <h4 class="font-bold mb-6 text-white text-lg">Newsletter</h4>
-                    <p class="text-gray-300 mb-6">Receba as últimas novidades e promoções exclusivas</p>
-                    <div class="space-y-3">
-                        <input type="email" placeholder="Seu e-mail" class="w-full p-4 glass-effect border border-white border-opacity-20 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-all">
-                        <button class="w-full btn-primary text-white py-4 rounded-xl font-semibold flex items-center justify-center space-x-2">
-                            <i class="fas fa-paper-plane"></i>
-                            <span>Inscrever-se</span>
-                        </button>
+            </div>
+        </section>
+
+        <footer class="main-footer-bottom">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="https://i.imgur.com/your-logo.png" alt="Ouveem Logo">
+                        <p>A sua rádio na web, com a melhor programação.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>MENU</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Quem Somos</a></li>
+                            <li><a href="#">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h4>CURTA NOSSA PÁGINA</h4>
+                        <div class="social-widget">
+                            <!-- Facebook Page Plugin Placeholder -->
+                        </div>
                     </div>
                 </div>
+                <div class="footer-bottom-bar">
+                    <p>&copy; 2024 Ouveem. Todos os direitos reservados.</p>
+                </div>
             </div>
-            
-            <div class="border-t border-white border-opacity-10 pt-8 text-center">
-                <p class="text-gray-400">&copy; 2024 WebRádio FM. Todos os direitos reservados. Desenvolvido com ❤️ para os amantes da música.</p>
-            </div>
-        </div>
-    </footer>
-<script src="script.js" defer></script>    
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98516bb0c585c02b',t:'MTc1ODg3NTY1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+        </footer>
+    </div>
+    <script src="script.js" defer></script>
+</body>
 </html>
