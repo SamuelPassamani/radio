@@ -53,40 +53,14 @@ input[type=submit],
     background-color: #c4242a !important;
 }
 
-/* Layout Structure */
-.container.geral {
-    padding-right: 350px; /* Space for the fixed player */
-}
+/*
+   Estilos de layout e fundo principais agora são controlados pelos
+   arquivos CSS do exemplo (bootstrap.min.css, dark.css, etc.).
+   As regras antigas foram removidas para evitar conflitos.
+*/
 
-/* Backgrounds and Borders */
-.controlColorBG:nth-child(even) {
-    background-color: #202020 !important;
-    background-image: url(https://webradio.hoost.com.br/test-drive/soundpro/theme/imgs/bgpt.png) !important;
-}
-
-.controlColorBG:nth-child(odd) {
-    background-color: #151515 !important;
-    background-image: url(https://webradio.hoost.com.br/test-drive/soundpro/theme/imgs/bgpt.png) !important;
-}
-
-footer.rodape {
-    border-top: solid 3px rgba(255, 255, 255, 0.1);
-    text-align: center;
-    padding: 20px;
-}
-
-.posRodape {
-    padding: 20px 0;
-}
-
-/* Typography */
-h2.titleModHome,
-.titleWidgets {
-    color: #fff !important;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
+/* A tipografia base e os títulos são definidos nos arquivos do exemplo.
+   Mantemos este arquivo para ajustes finos e personalizações. */
 
 /* Forms */
 input[type=text],
@@ -509,18 +483,15 @@ nav.menuAjaxfy ul li a:hover {
     margin-left: 15px; /* Align with container padding */
 }
 
+/* O layout do slider de notícias agora é controlado pelo plugin JS. */
 ul#seccondSlider {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
 }
 
 ul#seccondSlider li {
     background-color: #161616;
-    width: 24%;
     text-align: left;
 }
 
@@ -559,31 +530,32 @@ ul#seccondSlider li {
     color: #fff;
 }
 
-/* Three-Column Layout */
+/*
+  O layout de três colunas agora é controlado pelas classes de grid
+  do Bootstrap (col-md-*) presentes no HTML.
+*/
 .containerHome {
-    display: flex;
     padding: 20px 0;
-    gap: 20px;
 }
 
-.colunaEsquerda, .colunaDireita {
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+/* As larguras e o posicionamento das colunas são definidos pelo Bootstrap. */
+.colunaEsquerda, .colunaDireita, .colunaCentral {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px; /* Adiciona espaço entre os widgets em telas menores */
 }
 
-.colunaCentral {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.inlineBlockCols {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -4px; /* Correção para o espaço extra do inline-block */
 }
 
 .widgetContainer {
     background: #161616;
     border: 1px solid #191919;
     padding: 15px;
+    margin-bottom: 30px; /* Espaçamento consistente entre widgets */
 }
 
 .widgetContainer .titleWidgets {
@@ -729,16 +701,12 @@ ul.widgetBlog p a {
     margin-left: 15px; /* Align with container padding */
 }
 
-.gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0 15px;
-}
-
+/*
+  O layout da galeria agora é controlado pelo plugin de mosaico (Masonry).
+  As regras de flexbox foram removidas. Os estilos das imagens individuais
+  serão herdados dos arquivos CSS do exemplo ou ajustados se necessário.
+*/
 .gallery-grid img {
-    width: 150px; /* Fixed width for mosaic effect */
-    height: 150px;
     object-fit: cover;
     border: 2px solid #333;
 }
