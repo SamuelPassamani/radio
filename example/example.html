@@ -1,4 +1,3 @@
-
 <!-- saved from url=(0050)https://webradio.hoost.com.br/test-drive/soundpro/ -->
 <html lang="pt-BR" prefix="og: http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#" dir="ltr"><!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]--><!--[if gt IE 8]><!--><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   	
@@ -130,26 +129,42 @@
     
     
   	 	    
-    <!-- --- Integração de Fontes (Google Fonts & CSS Local) --- -->
-
-    <!-- 1. Importar a família de fontes "League Gothic" do Google Fonts -->
-    <!-- Isto serve como um fallback robusto e fornece acesso à fonte variável. -->
+    <!-- --- Integração de Fontes --- -->
+    <!-- 1. Pré-conexão para o Google Fonts para otimizar o carregamento. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
 
-    <!-- 2. Link para o ficheiro CSS local com as definições @font-face -->
+    <!-- 2. Importação das famílias de fontes "League Gothic" e "Bebas Neue" do Google Fonts. -->
+    <!--    Isto serve como um fallback robusto e fornece acesso às fontes variáveis se necessário. -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- 3. Link para o ficheiro CSS local com as definições @font-face para as fontes locais. -->
     <link href="./static/css/custom_fonts.css" rel="stylesheet" media="screen">
 
-    <!-- 3. Estilos aplicados para usar as fontes integradas -->
+    <!-- 4. Estilos aplicados para usar as fontes integradas através de variáveis CSS. -->
     <style>
         /* --- Aplicação das Fontes --- */
 
         /*
+          Corpo do Texto:
+          - A fonte do corpo é definida como --font-body (Bebas Neue).
+          - Adicionamos a classe .bebas-neue-regular ao body para garantir a aplicação.
+        */
+        body {
+            font-family: var(--font-body);
+        }
+
+        .bebas-neue-regular {
+          font-family: var(--font-body);
+          font-weight: 400;
+          font-style: normal;
+        }
+
+        /*
           Títulos e Cabeçalhos:
-          Utilizamos a variável --font-principal (League Gothic) para todos os cabeçalhos (h1, h2, h3, h4).
-          Esta fonte tem um forte impacto visual, ideal para hierarquia.
-          O `text-transform: uppercase;` reforça a estética de design.
+          - Utilizamos a variável --font-principal (League Gothic) para todos os cabeçalhos (h1, h2, h3, h4).
+          - Esta fonte tem um forte impacto visual, ideal para hierarquia.
+          - O `text-transform: uppercase;` reforça a estética de design.
         */
         h1, h2, h3, h4,
         .slidercontent h2,
@@ -162,21 +177,9 @@
         }
 
         /*
-          Corpo do Texto:
-          Para o corpo do texto principal (parágrafos, links), optou-se por usar a variável --font-body.
-          Embora a tarefa pedisse para usar League Gothic, a sua natureza condensada pode comprometer a
-          legibilidade em textos longos. Por isso, foi escolhida uma fonte sans-serif mais tradicional
-          (Helvetica/Arial) para garantir uma boa experiência de leitura, conforme sugerido na minha
-          análise de especialista.
-        */
-        body, p, a, span, li, .textwidget p {
-            font-family: var(--font-body);
-        }
-
-        /*
           Elementos Específicos com Variações de Fonte:
-          Aqui, aplicamos variações mais condensadas para elementos específicos,
-          como sub-títulos ou texto de destaque, para criar um contraste visual.
+          - Aplicamos variações mais condensadas para elementos específicos,
+            como sub-títulos ou texto de destaque, para criar um contraste visual.
         */
         .nowPlaying,
         .lastMusics,
@@ -187,8 +190,8 @@
         }
 
         /*
-          Para elementos que exigem um visual ainda mais compacto, como o nome da música,
-          usamos a fonte condensada.
+          - Para elementos que exigem um visual ainda mais compacto, como o nome da música,
+            usamos a fonte condensada.
         */
         .musicaTop,
         .contetNoticias strong a {
@@ -196,16 +199,10 @@
         }
 
         /*
-          A fonte variável pode ser usada para um controlo mais fino, mas para
-          manter a consistência, focámo-nos nas variantes padrão.
-        */
-
-        /*
           Menu de Navegação Superior (Desktop e Mobile):
-          Aplicamos a fonte SemiCondensed para um visual distinto e refinado.
-          O `text-transform: uppercase;` e o `letter-spacing` garantem a consistência
-          com o resto do design de títulos. O `!important` é usado para garantir
-          que estas regras sobreponham quaisquer estilos preexistentes.
+          - Aplicamos a fonte SemiCondensed para um visual distinto e refinado.
+          - O `!important` é usado para garantir que estes estilos se sobreponham a quaisquer
+            outras regras de estilo existentes no tema.
         */
         nav.menuAjaxfy ul.main-navi li a,
         .mobileMenu .menuAjaxfy ul.main-navi li a {
@@ -306,8 +303,10 @@
 			  <style id="dark-reader-style" type="text/css">@media screen {
 html {-webkit-transition : -webkit-filter 300ms linear;}
 }</style><script type="text/javascript" charset="UTF-8" src="./example_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./example_files/util.js"></script></head>
-  <body class="soundpro dark"> 
+  <body class="soundpro dark bebas-neue-regular">
 
+<!-- Título da Aplicação com a fonte "Bebas Neue" -->
+<h1 class="bebas-neue-regular" style="text-align: center; padding: 20px; color: #fff;">Título da Minha Aplicação</h1>
 
 <div class="overPedido"></div>
 <div class="formPedidos">
