@@ -199,6 +199,21 @@
           A fonte variável pode ser usada para um controlo mais fino, mas para
           manter a consistência, focámo-nos nas variantes padrão.
         */
+
+        /*
+          Menu de Navegação Superior (Desktop e Mobile):
+          Aplicamos a fonte SemiCondensed para um visual distinto e refinado.
+          O `text-transform: uppercase;` e o `letter-spacing` garantem a consistência
+          com o resto do design de títulos. O `!important` é usado para garantir
+          que estas regras sobreponham quaisquer estilos preexistentes.
+        */
+        nav.menuAjaxfy ul.main-navi li a,
+        .mobileMenu .menuAjaxfy ul.main-navi li a {
+            font-family: var(--font-semicondensed) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.08em !important;
+            font-weight: 500 !important; /* Peso médio para melhor legibilidade */
+        }
     </style>
 
     <style>		
