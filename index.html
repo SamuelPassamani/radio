@@ -4,216 +4,308 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ouveem - WebRádio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="site-container">
-        <!-- Topo -->
-        <header class="main-header">
-            <div class="top-bar">
-                <div class="container">
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+<body class="soundpro dark">
+    <audio id="player" autoplay="">
+        <source src="https://cast2.hoost.com.br:20000/stream" type="audio/mpeg">
+        <span>Your browser dont support that element.</span>
+    </audio>
+
+    <div id="superPlayer" style="right: -350px;">
+        <div class="closeOpenPlay closed">
+            <i class="fas fa-times"></i>
+            <i class="equalizericon"><div class="equalizer"></div></i>
+        </div>
+        <div class="imgPlayerCapa background">
+            <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/player.png" title="">
+        </div>
+        <div class="contentPlayer">
+            <div class="containerImg">
+                <div class="nowPlaying">Tocando Agora</div>
+                <div class="imgPlayCapa">
+                    <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/player.png" title="">
                 </div>
+                <div class="statusStream">
+                    <span class="status cc_streaminfo">Unknown - Hold the Line</span>
+                </div>
+                <div class="diskRotate"><img src="https://webradio.hoost.com.br/test-drive/soundpro/theme/imgs/disk.png"></div>
             </div>
-            <div class="logo-nav-area">
-                <div class="container">
-                    <div class="logo">
-                        <img src="img/brand/logo.png" alt="Ouveem Logo">
-                        <h1>OUVEEM</h1>
-                    </div>
-                    <nav class="main-nav">
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">QUEM SOMOS</a></li>
-                            <li><a href="#">ANUNCIE</a></li>
-                            <li><a href="#">NOTÍCIAS</a></li>
-                            <li><a href="#">FOTOS</a></li>
-                            <li><a href="#">VÍDEOS</a></li>
-                            <li><a href="#">CONTATO</a></li>
-                        </ul>
-                    </nav>
+        </div>
+        <div class="playPause playing">
+            <i class="fas fa-play-circle"></i>
+            <i class="fas fa-pause-circle"></i>
+        </div>
+        <div id="slider" class="hidden-xs ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+            <i class="fas fa-volume-down"></i>
+            <i class="fas fa-volume-up"></i>
+        </div>
+        <ul class="linksPlayrs">
+            <li><a href="#" title="Peça sua música!"><i class="fas fa-envelope-open"></i></a></li>
+            <li><a href="#" title="Android"><i class="fab fa-android"></i></a></li>
+            <li><a href="#" title="iOS"><i class="fab fa-apple"></i></a></li>
+            <li><a href="#" title="Windows"><i class="fab fa-windows"></i></a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div id="topoRadio">
+            <div class="container">
+                <div class="top">
+                    <a href="#" class="logotipo"><img src="img/brand/logo.png" alt="Ouveem Logo"></a>
+                    <ul class="linksSociais hideMobile">
+                        <li><a href="#" target="_blank" class="linkSocial facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank" class="linkSocial twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank" class="linkSocial instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank" class="linkSocial youtube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
                 </div>
+                <nav class="menuAjaxfy">
+                    <ul id="menu-menu-principal-1" class="main-navi">
+                        <li><a href="#">Sobre-nós</a></li>
+                        <li><a href="#">Notícias</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Programação</a></li>
+                        <li><a href="#">Galerias de fotos</a></li>
+                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#">Vídeos</a></li>
+                        <li><a href="#">Equipe</a></li>
+                        <li><a href="#">Promoções</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="live-player-bar">
-                <div class="container">
-                    <div class="radio-info">
-                        <i class="fas fa-broadcast-tower"></i>
-                        <span>Rádio Ouveem</span>
-                    </div>
-                    <div id="player-container">
-                        <button id="playBtn"><i class="fas fa-play"></i></button>
-                        <span id="live-status">AO VIVO</span>
-                        <div class="volume-control">
-                            <i class="fas fa-volume-down"></i>
-                            <input type="range" id="volumeSlider" min="0" max="100" value="70">
-                            <i class="fas fa-volume-up"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Conteúdo Principal -->
-        <main class="main-content container">
-            <div class="content-area">
-                <!-- Banner Principal -->
-                <section class="main-banner" style="background-image: url('img/sliders/slider-1.png');">
-                    <div class="banner-caption">
-                        <h2>OU SIMPLESMENTE ADICIONE UMA FOTO E ESCREVA SOBRE ELA</h2>
-                    </div>
-                </section>
-
-                <section class="ad-placeholder" style="background-image: url('img/banners/banner-horizontal-1.png');">
-                    <!-- Anúncio -->
-                </section>
-                
-                <!-- Últimas Notícias -->
-                <section class="content-block">
-                    <div class="block-header"><h2>ÚLTIMAS NOTÍCIAS</h2></div>
-                    <div class="news-grid">
-                        <article class="news-item main-news">
-                            <img src="img/noticias/el-pais-noticia-generica.jpg" alt="News">
-                            <h3>Título da notícia principal que ocupa mais espaço</h3>
-                        </article>
-                        <article class="news-item">
-                            <img src="img/noticias/rambo-v-poster.jpg" alt="News">
-                            <h3>Título da notícia secundária</h3>
-                        </article>
-                        <article class="news-item">
-                            <img src="img/noticias/venom-bilheteria.jpg" alt="News">
-                            <h3>Outra notícia importante</h3>
-                        </article>
-                    </div>
-                </section>
-                
-                <!-- Vídeo em Destaque -->
-                <section class="content-block">
-                    <div class="block-header"><h2>VÍDEO EM DESTAQUE</h2></div>
-                    <div class="video-feature">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </section>
-
-                 <!-- Últimas do Blog -->
-                 <section class="content-block">
-                    <div class="block-header"><h2>ÚLTIMAS DO BLOG</h2></div>
-                    <div class="blog-grid">
-                        <article class="blog-post">
-                            <img src="img/albuns/finally-famous-capa.jpg" alt="Blog Post">
-                            <h4>Título do Post do Blog</h4>
-                            <p>Um breve resumo do conteúdo do post, convidando o leitor a saber mais...</p>
-                        </article>
-                        <article class="blog-post">
-                            <img src="img/albuns/givelove-capa.jpg" alt="Blog Post">
-                            <h4>Outro Post Interessante</h4>
-                            <p>Mais um resumo sobre um tópico relevante abordado no blog da rádio...</p>
-                        </article>
-                    </div>
-                </section>
-
-                <!-- Galeria de Exemplo -->
-                <section class="content-block">
-                    <div class="block-header"><h2>GALERIA DE EXEMPLO</h2></div>
-                    <div class="gallery-grid">
-                        <img src="img/artistas/amy-winehouse.jpg" alt="Gallery Image">
-                        <img src="img/artistas/beyonce.jpg" alt="Gallery Image">
-                        <img src="img/artistas/imagine-dragons.jpg" alt="Gallery Image">
-                        <img src="img/artistas/nasce-uma-estrela.jpg" alt="Gallery Image">
-                        <img src="img/artistas/amy-winehouse.jpg" alt="Gallery Image">
-                        <img src="img/artistas/beyonce.jpg" alt="Gallery Image">
-                    </div>
-                </section>
-
-            </div>
-            <aside class="sidebar">
-                <div class="widget">
-                    <div class="widget-header"><h3>PEÇA SUA MÚSICA</h3></div>
-                    <div class="widget-content">
-                        <form id="musicRequestForm">
-                            <input type="text" placeholder="Seu Nome">
-                            <input type="text" placeholder="Sua Música">
-                            <button type="submit">ENVIAR</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="widget-header"><h3>VÍDEO EM DESTAQUE</h3></div>
-                    <div class="widget-content">
-                        <iframe src="https://www.youtube.com/embed/a_FL_a42A4w" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="widget-header"><h3>ENQUETE</h3></div>
-                    <div class="widget-content">
-                        <form id="pollForm">
-                            <p>Qual seu estilo de rock favorito?</p>
-                            <label><input type="radio" name="poll" value="classic"> Clássico</label>
-                            <label><input type="radio" name="poll" value="hard"> Hard Rock</label>
-                            <label><input type="radio" name="poll" value="metal"> Metal</label>
-                            <button type="submit">VOTAR</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="widget-header"><h3>TOP 10</h3></div>
-                    <ul class="widget-content top-list">
-                        <li><span>1</span> Artista - Música 1</li>
-                        <li><span>2</span> Artista - Música 2</li>
-                        <li><span>3</span> Artista - Música 3</li>
-                        <li><span>4</span> Artista - Música 4</li>
-                        <li><span>5</span> Artista - Música 5</li>
+        </div>
+    </header>
+    <div class="container geral">
+        <div id="containerAjaxfy">
+            <div class="controlColorBG hidden-xs bgC1">
+                <div class="sliderPrincipal">
+                    <ul id="firstSlider">
+                        <li>
+                            <a href="#" style="background:url(https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/sliders-4.png) center top;">
+                                <div class="container">
+                                    <div class="slidercontent">
+                                        <h2>Ou simplesmente adicione uma foto e escreva sobre ela</h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-            </aside>
-        </main>
+            </div>
 
-        <section class="app-banner">
-            <div class="container">
-                <img src="img/banners/banner-app.png" alt="App Oficial">
-                <div class="app-links">
-                    <a href="#"><img src="https://i.imgur.com/google-play.png" alt="Google Play"></a>
-                    <a href="#"><img src="https://i.imgur.com/app-store.png" alt="App Store"></a>
+            <div class="controlColorBG bgC2">
+                <div>
+                    <div class="bannerPublicidade">
+                        <div class="container"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/banner_horizontal.png" width="100%"></a></div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <footer class="main-footer-bottom">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <img src="img/brand/logo.png" alt="Ouveem Logo">
-                        <p>A sua rádio na web, com a melhor programação.</p>
-                    </div>
-                    <div class="footer-links">
-                        <h4>MENU</h4>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Quem Somos</a></li>
-                            <li><a href="#">Contato</a></li>
+            <div class="controlColorBG hideMobile bgC1">
+                <div class="noticiasContainer">
+                    <h2 class="titleModHome">Últimas noticias</h2>
+                    <div class="container noticiasSlider" id="newsHome">
+                        <ul id="seccondSlider">
+                            <li class="bgC1">
+                                <div class="imgThumb"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/nasce-uma-estrela-004-300x400.jpg" alt=""></a></div>
+                                <div class="contetNoticias">
+                                    <h3><a href="#">Lady GaGa revela clipe de “Look What I Found”</a></h3>
+                                    <p>Em 10/10/2018</p>
+                                </div>
+                            </li>
+                            <li class="bgC1">
+                                <div class="imgThumb"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/capa47-300x400.jpg" alt=""></a></div>
+                                <div class="contetNoticias">
+                                    <h3><a href="#">Pitty lança clipe de novo single, “Te Conecta”</a></h3>
+                                    <p>Em 10/10/2018</p>
+                                </div>
+                            </li>
+                            <li class="bgC1">
+                                <div class="imgThumb"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/E7ZhFx-300x400.jpg" alt=""></a></div>
+                                <div class="contetNoticias">
+                                    <h3><a href="#">Nicki Minaj lança clipe de “Barbie Dreams”</a></h3>
+                                    <p>Em 10/10/2018</p>
+                                </div>
+                            </li>
+                             <li class="bgC1">
+                                <div class="imgThumb"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/annaofthenorthcat-300x400.jpg" alt=""></a></div>
+                                <div class="contetNoticias">
+                                    <h3><a href="#">Anna Of The North conquista público com “Lovers”</a></h3>
+                                    <p>Em 10/10/2018</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
-                    <div class="footer-social">
-                        <h4>CURTA NOSSA PÁGINA</h4>
-                        <div class="social-widget">
-                            <!-- Facebook Page Plugin Placeholder -->
+                    <a href="#" class="btnTodasNoticias">Veja todas as noticias</a>
+                </div>
+            </div>
+
+            <div class="controlColorBG bgC2">
+                <div>
+                    <div class="bannerPublicidade">
+                        <div class="container"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/banner_horizontal2.png" width="100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controlColorBG bgC1">
+                <div class="container">
+                    <div class="containerHome">
+                        <div class="colunaEsquerda inlineBlockCols col-md-3">
+                            <div class="widgetContainer">
+                                <h3 class="titleWidgets">Peça sua música</h3>
+                                <div class="sepWidgets"></div>
+                                <a href="#" title="" class="pedidoMusicaWidget">
+                                    <div class="realContainerPedidos"><i class="fas fa-envelope-square"></i>
+                                        <div class="containerTxtPedidos">Clique aqui e faça o seu <span>Pedido de Música</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="widgetContainer">
+                                <h3 class="titleWidgets">Publicidade</h3>
+                                <div class="sepWidgets"></div>
+                                <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/Untitled-1.png" style="max-width: 100%; height: auto;">
+                            </div>
+                        </div>
+                        <div class="colunaCentral inlineBlockCols col-md-6">
+                            <div class="widgetContainer">
+                                <h3 class="titleWidgets">Vídeo em destaque</h3>
+                                <div class="sepWidgets"></div>
+                                <iframe src="https://www.youtube.com/embed/0KSOMA3QBU0" width="100%" height="350" frameborder="0" allowfullscreen=""></iframe>
+                            </div>
+                             <div class="widgetContainer">
+                                <h3 class="titleWidgets">Últimas do blog</h3>
+                                <div class="sepWidgets"></div>
+                                <ul class="widgetBlog">
+                                     <li>
+                                        <div class="imgThumb"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/venomending-blogroll-1538505459077_1280w-1-860x400.jpg" alt=""></a></div>
+                                        <div class="contetNoticias">
+                                            <h4><a href="#">Bilheterias Estados Unidos: Venom estreia com força total</a></h4>
+                                            <p>Após ter tomado a primeira colocação de&nbsp;Gravidade&nbsp;no quesito bilheterias... <a href="#">Leia mais</a></p>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <div class="imgThumb"><a href="#"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/feature-sylvester-stallone-pamer-teaser-poster-rambo-v-1300x500-860x400.jpg" alt=""></a></div>
+                                        <div class="contetNoticias">
+                                            <h4><a href="#">Rambo 5 ganha título oficial com referência ao primeiro filme</a></h4>
+                                            <p>Sylvester Stallone&nbsp;está de volta como Rambo no quinto filme da franquia... <a href="#">Leia mais</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="colunaDireita inlineBlockCols col-md-3">
+                             <div class="widgetContainer">
+                                <h3 class="titleWidgets">Enquete</h3>
+                                <div class="sepWidgets"></div>
+                                <form class="totalpoll-view-vote">
+                                    <h4 class="totalpoll-question">Como está o novo site?</h4>
+                                    <div class="totalpoll-choices">
+                                        <label class="totalpoll-choice"><input type="radio" name="poll"> Top</label>
+                                        <label class="totalpoll-choice"><input type="radio" name="poll"> Bom</label>
+                                        <label class="totalpoll-choice"><input type="radio" name="poll"> Mediano</label>
+                                        <label class="totalpoll-choice"><input type="radio" name="poll"> Ruim</label>
+                                    </div>
+                                    <div class="totalpoll-buttons">
+                                        <button type="button" class="totalpoll-button-link">Resultados</button>
+                                        <button type="submit" class="totalpoll-button-primary">Votar</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="widgetContainer">
+                                <h3 class="titleWidgets">Top 10</h3>
+                                <div class="sepWidgets"></div>
+                                <div class="containerTop secundarioTop">
+                                    <div class="thumbImgTop"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/albumart-givelove-1400px-1200x1200.jpg" width="100%"></div>
+                                    <div class="nomeCantor"><span>#01:</span> Andy Gunner</div>
+                                    <div class="musicaTop">Musica: Give Love</div>
+                                </div>
+                                <div class="containerTop secundarioTop">
+                                    <div class="thumbImgTop"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/magic-music-album-review-marquee-magazine.jpg" width="100%"></div>
+                                    <div class="nomeCantor"><span>#02:</span> Gennea</div>
+                                    <div class="musicaTop">Musica: Give a Music</div>
+                                </div>
+                                <div class="containerTop secundarioTop">
+                                    <div class="thumbImgTop"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/Nicki-Minaj-The-Pinkprint-greatest-album-covers-billboard-1000x1000.jpg" width="100%"></div>
+                                    <div class="nomeCantor"><span>#03:</span> Nick Minaj</div>
+                                    <div class="musicaTop">Musica: Pink Pinkest</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="footer-bottom-bar">
-                    <p>&copy; 2024 Ouveem. Todos os direitos reservados.</p>
+            </div>
+
+            <div class="controlColorBG bgC2">
+                <div class="clearfix"></div>
+                <div class="fotosContainer" id="moduloFotos">
+                    <h2 class="titleModHome">Galeria de exemplo</h2>
+                    <div class="gallery-grid">
+                        <!-- Gallery images will be populated here, this is a sample -->
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/p01bqgr4-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/17917315903_b94302959b_b_Selena-gomez-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/the-most-popular-music-artist-in-every-state-according-to-pandora-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/the-10-most-popular-music-artists-of-2018-so-far-according-to-nielsen-150x150.png" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/image-1-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/p025k871-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/images-1-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/image-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/1200px-broods-1024x751-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/150723122207-24-70s-music-restricted-super-169-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/playboi-carti-150x150.jpg" alt="Gallery Image">
+                        <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2018/10/Cardi-B-150x150.jpg" alt="Gallery Image">
+                    </div>
                 </div>
+            </div>
+
+            <div class="controlColorBG bgC1">
+                <div>
+                    <div class="bannerPublicidade">
+                        <div class="container"><img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/banner_horizontal_app.png" width="100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="posRodape">
+            <div class="container">
+                <div class="widgetContainer">
+                    <h3 class="titleWidgets">Menu</h3>
+                    <ul class="menu">
+                        <li><a href="#">Sobre-nos</a></li>
+                        <li><a href="#">Notícias</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                 <div class="widgetContainer">
+                    <h3 class="titleWidgets">Curta no social</h3>
+                    <ul class="linksSociais">
+                         <li><a href="#" target="_blank" class="linkSocial facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank" class="linkSocial twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank" class="linkSocial instagram"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                 <div class="widgetContainer">
+                    <h3 class="titleWidgets">Texto</h3>
+                    <div class="textwidget">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="rodape">
+            <div class="container">
+                <span class="txtCopright">© Todos os direitos reservados a Hoost - 2018 ~ 2019</span>
+                <a href="#" class="linkHoost" style="opacity: 0.5;">Web Rádio administrável</a>
+                <div class="clearfix"></div>
             </div>
         </footer>
     </div>
-    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,74 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Audio Player ---
-    const playBtn = document.getElementById('playBtn');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const liveStatus = document.getElementById('live-status');
+$(document).ready(function() {
+    const player = document.getElementById("player");
+    const superPlayer = $('#superPlayer');
+    const closeOpenPlay = $('.closeOpenPlay');
+    const playPauseBtn = $('.playPause');
 
-    let isPlaying = false;
-    // Using a placeholder stream URL. Replace with the actual one if available.
-    const streamUrl = 'https://stream.zeno.fm/cbzw2rbebfkuv';
-    let audioPlayer;
-
-    function initAudioPlayer() {
-        if (!audioPlayer) {
-            audioPlayer = new Audio(streamUrl);
-            audioPlayer.volume = volumeSlider.value / 100;
-
-            audioPlayer.onplaying = () => {
-                isPlaying = true;
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                liveStatus.textContent = "NO AR";
-                liveStatus.style.color = "#0f0"; // Green color for "NO AR"
-            };
-
-            audioPlayer.onpause = () => {
-                isPlaying = false;
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                liveStatus.textContent = "AO VIVO";
-                liveStatus.style.color = "#fff";
-            };
-
-            audioPlayer.onerror = () => {
-                alert("Não foi possível conectar à rádio. Tente novamente mais tarde.");
-                isPlaying = false;
-                playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                liveStatus.textContent = "OFFLINE";
-                liveStatus.style.color = "#f00"; // Red for offline
-            };
-        }
-    }
-
-    playBtn.addEventListener('click', () => {
-        initAudioPlayer();
-        if (isPlaying) {
-            audioPlayer.pause();
+    // Toggle Player Visibility
+    closeOpenPlay.on('click', function() {
+        if ($(this).hasClass('open')) {
+            superPlayer.css('right', '-350px');
+            $(this).removeClass('open').addClass('closed');
         } else {
-            audioPlayer.play();
+            superPlayer.css('right', '0px');
+            $(this).removeClass('closed').addClass('open');
         }
     });
 
-    volumeSlider.addEventListener('input', () => {
-        if (audioPlayer) {
-            audioPlayer.volume = volumeSlider.value / 100;
-        }
-    });
-
-    // --- Forms ---
-    const musicRequestForm = document.getElementById('musicRequestForm');
-    musicRequestForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Seu pedido de música foi enviado. Obrigado!');
-        musicRequestForm.reset();
-    });
-
-    const pollForm = document.getElementById('pollForm');
-    pollForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (pollForm.querySelector('input[name="poll"]:checked')) {
-            alert('Voto computado com sucesso. Obrigado por participar!');
-            pollForm.reset();
+    // Play/Pause Audio
+    playPauseBtn.on('click', function() {
+        if ($(this).hasClass('playing')) {
+            player.pause();
+            $(this).removeClass('playing').addClass('stoped');
         } else {
-            alert('Por favor, selecione uma opção para votar.');
+            player.play();
+            $(this).removeClass('stoped').addClass('playing');
         }
     });
+
+    // Note: Volume slider functionality requires jQuery UI, which is not included yet
+    // to keep this step focused. It can be added later if needed.
 });
