@@ -218,7 +218,7 @@ nav.menuAjaxfy ul li a {
 
 nav.menuAjaxfy ul li a:hover {
     opacity: 1 !important;
-    border-top: solid 3px #c4242a !important;
+    /* A borda superior no hover foi removida para corresponder ao design de referência */
 }
 
 /* Super Player */
