@@ -24,11 +24,17 @@ body * {
     display: table;
 }
 
-/* Accent Colors */
-h2.titleModHome {
-    border-top: solid 5px #c4242a;
+/* Títulos dos Módulos Principais */
+.main-content .titleModHome {
+    background-color: #161616;
+    border-bottom: 3px solid #c4242a;
+    padding: 15px 20px;
+    margin: -20px -20px 20px -20px; /* Margem negativa para preencher o container */
+    font-size: 16px;
+    text-transform: uppercase;
 }
 
+/* Cores de Destaque Globais */
 .containerTop .nomeCantor span,
 .noticiasContainer li .contetNoticias strong a,
 .inputsShouts span,
@@ -47,10 +53,60 @@ input[type=submit],
 .containerTop .thumbImgTop,
 .sweet-alert button,
 .twitterContainer,
-.sepWidgets,
+.widgetContainer .sepWidgets,
 .linksSociais li:hover,
 .sk-button {
     background-color: #c4242a !important;
+}
+
+/* Esconder separadores que não são mais necessários na coluna principal */
+.main-content .sepWidgets {
+    display: none;
+}
+
+/* Container para os módulos da coluna principal */
+.module-container {
+    background-color: #121212;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* Ajustes para a lista de notícias dentro do novo container */
+.module-container .widget_hoost_noticias ul {
+    margin: 0 -10px;
+}
+
+/* Estilos dos Títulos dos Widgets da Barra Lateral */
+.widgetContainer .titleWidgets {
+    font-size: 16px;
+    margin: -20px -20px 15px -20px;
+    padding: 15px 20px;
+    background-color: #161616;
+    text-transform: uppercase;
+    border-bottom: 3px solid #c4242a;
+}
+
+/* Remover estilo de título global que não se aplica mais */
+h2.titleModHome {
+    /* As regras foram movidas para .main-content .titleModHome e .noticiasContainer h2.titleModHome */
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    width: auto;
+}
+
+/* Estilo específico para o título de notícias que fica fora da estrutura de colunas */
+.noticiasContainer h2.titleModHome {
+    background-color: #161616;
+    border-bottom: 3px solid #c4242a;
+    padding: 15px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 1170px;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+    text-align: left;
 }
 
 /*
@@ -531,38 +587,34 @@ ul#seccondSlider li {
 }
 
 /*
-  O layout de três colunas agora é controlado pelas classes de grid
-  do Bootstrap (col-md-*) presentes no HTML.
+  O layout de colunas agora é controlado pelas classes de grid
+  do Bootstrap (col-md-*) presentes no HTML. A classe .inlineBlockCols foi removida.
 */
 .containerHome {
     padding: 20px 0;
 }
 
 /* As larguras e o posicionamento das colunas são definidos pelo Bootstrap. */
-.colunaEsquerda, .colunaDireita, .colunaCentral {
+.col-md-8, .col-md-4 {
     padding-left: 15px;
     padding-right: 15px;
     margin-bottom: 20px; /* Adiciona espaço entre os widgets em telas menores */
 }
 
-.inlineBlockCols {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: -4px; /* Correção para o espaço extra do inline-block */
-}
-
 .widgetContainer {
-    background: #161616;
-    border: 1px solid #191919;
-    padding: 15px;
+    background: #121212; /* Cor de fundo ajustada para ser mais escura, como na referência */
+    border: none; /* Remoção da borda para um visual mais limpo */
+    padding: 20px; /* Aumento do padding para mais respiro interno */
     margin-bottom: 30px; /* Espaçamento consistente entre widgets */
 }
 
 .widgetContainer .titleWidgets {
-    font-size: 18px;
-    margin: 0 0 10px 0;
-    padding-bottom: 10px;
-    border-bottom: solid 3px rgba(255, 255, 255, 0.1);
+    font-size: 16px; /* Ajuste no tamanho da fonte */
+    margin: -20px -20px 15px -20px; /* Margem negativa para fazer o fundo se estender */
+    padding: 15px 20px; /* Padding para o texto do título */
+    background-color: #161616; /* Fundo escuro para o título, como na referência */
+    text-transform: uppercase; /* Títulos em maiúsculo */
+    border-bottom: 3px solid #c4242a; /* Borda inferior vermelha */
 }
 
 /* Widget Specific Styles */
