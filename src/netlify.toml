@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/*"
-  to = "https://samuelpassamani.github.io/radio/example/example"
+  to = "https://samuelpassamani.github.io/radio/example/example.html"
   status = 200
   force = true
     [redirects.headers]
