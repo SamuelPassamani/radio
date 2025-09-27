@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouveem - WebRádio</title>
+
+    <!-- Adicionando os links CSS do exemplo -->
+    <link href="example/example_files/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="example/example_files/sweet-alert.css" rel="stylesheet" media="screen">
+    <link href="example/example_files/dark.css" rel="stylesheet" media="screen">
+    <link href="example/example_files/font-awesome.min.css" rel="stylesheet">
+    <link href="example/example_files/jquery.tosrus.min.css" rel="stylesheet">
+    <link href="example/example_files/all.css" rel="stylesheet">
+    <link href="example/example_files/hoost.css" rel="stylesheet">
+    <link href="example/example_files/quick-chat.css" rel="stylesheet">
+    <link href="example/example_files/instag-slider.css" rel="stylesheet">
+    <link href="example/example_files/wis-header.css" rel="stylesheet">
+    <link href="example/example_files/schreikasten.css" rel="stylesheet">
+
+    <!-- Mantendo o style.css do projeto por último para garantir a prioridade -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Adicionando jQuery e outros scripts essenciais no head -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="example/example_files/jquery.flexslider-min.js.download"></script>
+    <script type="text/javascript" src="example/example_files/jquery-ui.min.js.download"></script>
+</head>
+<body class="soundpro dark">
+    <audio id="player" autoplay="">
+        <source src="https://cast2.hoost.com.br:20000/stream" type="audio/mpeg">
+        <span>Your browser dont support that element.</span>
+    </audio>
+
+    <div id="superPlayer" style="right: -350px;">
+        <div class="closeOpenPlay closed">
+            <i class="fas fa-times"></i>
+            <i class="equalizericon"><div class="equalizer"></div></i>
+        </div>
+        <div class="imgPlayerCapa background">
+            <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/player.png" title="">
+        </div>
+        <div class="contentPlayer">
+            <div class="containerImg">
+                <div class="nowPlaying">Tocando Agora</div>
+                <div class="imgPlayCapa">
+                    <img src="https://webradio.hoost.com.br/test-drive/soundpro/files/2023/06/player.png" title="">
+                </div>
+                <div class="statusStream">
+                    <span class="status cc_streaminfo">Unknown - Hold the Line</span>
+                </div>
+                <div class="diskRotate"><img src="https://webradio.hoost.com.br/test-drive/soundpro/theme/imgs/disk.png"></div>
+            </div>
+        </div>
+        <div class="playPause playing">
+            <i class="fas fa-play-circle"></i>
+            <i class="fas fa-pause-circle"></i>
+        </div>
+        <div id="slider" class="hidden-xs ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+            <i class="fas fa-volume-down"></i>
+            <i class="fas fa-volume-up"></i>
+        </div>
+        <ul class="linksPlayrs">
+            <li><a href="#" title="Peça sua música!"><i class="fas fa-envelope-open"></i></a></li>
+            <li><a href="#" title="Android"><i class="fab fa-android"></i></a></li>
+            <li><a href="#" title="iOS"><i class="fab fa-apple"></i></a></li>
+            <li><a href="#" title="Windows"><i class="fab fa-windows"></i></a></li>
+        </ul>
+    </div>
+
+    <header>
+
+  <div id="topoRadio">
+	<div class="container">
+    <div class="top">
+	<a href="#" class="logotipo"><img src="img/brand/logo.png" alt="Ouveem Logo"></a>
+
+
+			<a href="https://web.whatsapp.com/send?l=en&amp;phone=+5511999999999" target="_blank" title="Whatsapp" class="buttonZap" style="position: fixed; left: 10px; bottom: 0px; z-index: 90"><div><i class="fab fa-whatsapp"></i></div> <span class="containerZap hideMobile"><span>Fale conosco via Whatsapp:</span> <span class="nbmr">+55 11 999999999</span></span></a>
+
+               <ul class="linksSociais hideMobile">
+			<li><a href="#" target="_blank" class="linkSocial facebook"><i class="fab fa-facebook-f"></i></a></li>			<li><a href="#" target="_blank" class="linkSocial twitter"><i class="fab fa-twitter"></i></a></li>						<li><a href="#" target="_blank" class="linkSocial instagram"><i class="fab fa-instagram"></i></a></li>																		        </ul>
+
+
+      <div class="clearfix"></div>
+    </div>
+       <div class="mobileMenu controlColorBG bgC2">
+		<script>
+			$(function() {
+				$('.mobileMenu .actionMobile').click(function() {
+					$('.mobileMenu .menuAjaxfy').slideToggle(300);
+				});
+				$('.mobileMenu .menuAjaxfy a').click(function() {
+					$('.mobileMenu .menuAjaxfy').slideToggle(300);
+				});
+			})
+		</script>
+		<a href="#" class="actionMobile">Menu</a>
+		<div class="menuAjaxfy">
+				<ul id="menu-menu-principal" class="main-navi"><li class="menu-item-has-children"><a href="#">Sobre-nos</a>
+<ul class="sub-menu">
+	<li><a href="#">Sobre-nos</a></li>
+	<li><a href="#">Fale conosco</a></li>
+</ul>
+</li>
+<li><a href="#">Notícias</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Programação</a></li>
+<li><a href="#">Galerias de fotos</a></li>
+<li><a href="#">Eventos</a></li>
+<li><a href="#">Vídeos</a></li>
+<li><a href="#">Equipe</a></li>
+<li><a href="#">Promoções</a></li>
+<li><a href="#">Contato</a></li>
+</ul>
+				</div>
+		</div>
+        <nav class="menuAjaxfy">
+							<ul id="menu-menu-principal-1" class="main-navi"><li class="menu-item-has-children"><a href="#">Sobre-nos</a>
+<ul class="sub-menu">
+	<li><a href="#">Sobre-nos</a></li>
+	<li><a href="#">Fale conosco</a></li>
+</ul>
+</li>
+<li><a href="#">Notícias</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Programação</a></li>
+<li><a href="#">Galerias de fotos</a></li>
+<li><a href="#">Eventos</a></li>
+<li><a href="#">Vídeos</a></li>
+<li><a href="#">Equipe</a></li>
+<li><a href="#">Promoções</a></li>
+<li><a href="#">Contato</a></li>
+</ul>
+				                <a class="newWindowPlayer hideMobile" href="javascript:popit(&quot;http://players.hoost.com.br/flat/card.php?ip=cast2.hoost.com.br&amp;porta=20000&amp;codec=mp3&amp;point=/stream&amp;strUser=hoostcom&amp;tech=icecast&amp;color1=c4242a&amp;color2=fff&amp;bgColor=333333&amp;facebook=http://facebook.com/hoostcom&amp;twitter=http://facebook.com/hoostcom&amp;thumbImg=true&amp;autoplay=on&amp;point=/stream&amp;statusTxt=true&quot;)"><img src="example/example_files/newWindow.png"></a><script>function popit(URL) { var width = 300; var height = 420; window.open(URL,"janela", "width="+width+", height="+height+", scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no");}</script>
+        <div class="clearfix"></div>
+        </nav>
+    </div>
+  </div>
+  </header>
+  <div class="container geral">
+  <div id="containerAjaxfy">
+<div class="controlColorBG hidden-xs bgC1">
+  <div class="sliderPrincipal">
+    <ul id="firstSlider">
+		        <li>
+            <a href="#" target="_self" title="" style="background:url(example/example_files/sliders01-1.png) center top;">
+                <div class="container">
+                    <div class="slidercontent">
+                        <h2></h2>
+                    </div>
+                </div>
+            </a>
+        </li>
+		        <li>
+            <a href="#" target="_self" class="" style="background:url(example/example_files/sliders-4.png) center top;">
+                <div class="container">
+                    <div class="slidercontent">
+                        <h2>Ou simplesmente adicione uma foto e escreva sobre ela</h2>
+                    </div>
+                </div>
+            </a>
+        </li>
+		        <li>
+            <a href="#" target="_self" class="" style="background:url(example/example_files/slider02-1.png) center top;">
+                <div class="container">
+                    <div class="slidercontent">
+                        <h2>E o melhor: Você faz tudo pelo painel de controle!</h2>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="controlColorBG bgC2">
+
+	<div>
+		<div class="bannerPublicidade">
+							<div class="container"><a href="http://www.hoost.com.br/" target="_blank" title=""><img src="./example/example_files/banner_horizontal.png" width="100%"></a></div>
+								</div>
+	</div>
+
+</div>
+
+
+
+<div class="controlColorBG hideMobile bgC1">
+  <div class="noticiasContainer">
+	<h2 class="titleModHome">Últimas noticias</h2>
+
+    <div class="container noticiasSlider" id="newsHome">
+    <ul id="seccondSlider">
+	<li class="bgC1">
+		<div class="imgThumb"><a href="#" title="Lady GaGa revela clipe de “Look What I Found” – música do filme “Nasce Uma Estrela”"><img width="300" height="400" src="./example/example_files/nasce-uma-estrela-004-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Lady GaGa revela clipe de “Look What I Found” – música do filme “Nasce Uma Estrela”">Lady GaGa revela clipe de “Look What I Found” – música do filme “Nasce Uma Estrela”</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1 odd">
+		<div class="imgThumb"><a href="#" title="Pitty lança clipe de novo single, “Te Conecta”. Assista!"><img width="300" height="400" src="./example/example_files/capa47-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Pitty lança clipe de novo single, “Te Conecta”. Assista!">Pitty lança clipe de novo single, “Te Conecta”. Assista!</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1">
+		<div class="imgThumb"><a href="#" title="Nicki Minaj lança clipe de “Barbie Dreams”. Confira!"><img width="300" height="400" src="./example/example_files/E7ZhFx-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Nicki Minaj lança clipe de “Barbie Dreams”. Confira!">Nicki Minaj lança clipe de “Barbie Dreams”. Confira!</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1 odd">
+		<div class="imgThumb"><a href="#" title="Anna Of The North conquista público brasileiro com “Lovers”"><img width="300" height="400" src="./example/example_files/annaofthenorthcat-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Anna Of The North conquista público brasileiro com “Lovers”">Anna Of The North conquista público brasileiro com “Lovers”</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1">
+		<div class="imgThumb"><a href="#" title="Acabou a espera: ouça o novo single da Avril Lavigne!"><img width="300" height="400" src="./example/example_files/avril-lavigne--300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Acabou a espera: ouça o novo single da Avril Lavigne!">Acabou a espera: ouça o novo single da Avril Lavigne!</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1 odd">
+		<div class="imgThumb"><a href="#" title="Imagine Dragons lança clipe com letra de “Zero”, trilha de “WiFi Ralph”. Assista!"><img width="300" height="400" src="./example/example_files/imaginedragons_04-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Imagine Dragons lança clipe com letra de “Zero”, trilha de “WiFi Ralph”. Assista!">Imagine Dragons lança clipe com letra de “Zero”, trilha de “WiFi Ralph”. Assista!</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1">
+		<div class="imgThumb"><a href="#" title="Assista ao trailer do novo documentário sobre a Amy Winehouse"><img width="300" height="400" src="./example/example_files/Amy-Winehouse-foi-roubada-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Assista ao trailer do novo documentário sobre a Amy Winehouse">Assista ao trailer do novo documentário sobre a Amy Winehouse</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+			<li class="bgC1 odd">
+		<div class="imgThumb"><a href="#" title="Beyoncé é eleita a mulher mais poderosa do mundo da música. Veja a lista!"><img width="300" height="400" src="./example/example_files/beyonce_knowles_4-normal-300x400.jpg" class="attachment-noticiasThumb size-noticiasThumb wp-post-image" alt="" title="Veja o post completo"></a></div>
+		<div class="contetNoticias">
+                    <strong></strong>
+                    <h3><a href="#" title="Beyoncé é eleita a mulher mais poderosa do mundo da música. Veja a lista!">Beyoncé é eleita a mulher mais poderosa do mundo da música. Veja a lista!</a></h3>
+                    <p>Em 10/10/2018</p>
+                </div>
+        </li>
+		        </ul>
+    </div>
+    <a href="#" title="" class="btnTodasNoticias">Veja todas as noticias</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="controlColorBG bgC2">
+
+	<div>
+		<div class="bannerPublicidade">
+							<div class="container"><img src="./example/example_files/banner_horizontal2.png" width="100%"></div>
+								</div>
+	</div>
+
+</div>
+
+
+<div class="controlColorBG bgC1">
+    <div class="container">
+        <div class="row">
+            <!-- INÍCIO DA COLUNA PRINCIPAL -->
+            <div class="col-md-8 main-content">
+                <!-- Módulo de Vídeo em Destaque -->
+                <div class="module-container">
+                    <h2 class="titleModHome">Vídeo em destaque</h2>
+                    <div class="widget_container widget_hoost_video">
+                        <iframe src="./example/example_files/0KSOMA3QBU0.html" width="100%" height="350" frameborder="0" allowfullscreen=""></iframe>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Módulo de Últimas Notícias (Grid) -->
+                <div class="module-container">
+                    <h2 class="titleModHome">Últimas noticias</h2>
+                    <div class="widget_container widget_hoost_noticias">
+                        <ul id="widgetNoticias" class="row">
+                          <li class="col-lg-4 col-md-6">
+                              <div class="widgetNoticiasInner">
+                                  <div class="imgThumb"><a href="#"><img width="255" height="125" src="./example/example_files/nasce-uma-estrela-004-255x125.jpg" class="attachment-noticiasThumbWidget size-noticiasThumbWidget wp-post-image" alt=""></a></div>
+                                  <div class="contetNoticias">
+                                      <strong>Música, </strong>
+                                      <h3><a href="#">Lady GaGa revela clipe de “Look What I Found” – música do filme “Nasce Uma E</a></h3>
+                                      <p>Em 10/10/2018</p>
+                                  </div>
+                             </div>
+                          </li>
+                          <li class="col-lg-4 col-md-6">
+                              <div class="widgetNoticiasInner">
+                                  <div class="imgThumb"><a href="#"><img width="255" height="125" src="./example/example_files/capa47-255x125.jpg" class="attachment-noticiasThumbWidget size-noticiasThumbWidget wp-post-image" alt=""></a></div>
+                                  <div class="contetNoticias">
+                                      <strong>Música, </strong>
+                                      <h3><a href="#">Pitty lança clipe de novo single, “Te Conecta”. Assista!</a></h3>
+                                      <p>Em 10/10/2018</p>
+                                  </div>
+                             </div>
+                          </li>
+                          <li class="col-lg-4 col-md-6">
+                              <div class="widgetNoticiasInner">
+                                  <div class="imgThumb"><a href="#"><img width="255" height="125" src="./example/example_files/E7ZhFx-255x125.jpg" class="attachment-noticiasThumbWidget size-noticiasThumbWidget wp-post-image" alt=""></a></div>
+                                  <div class="contetNoticias">
+                                      <strong>Música, </strong>
+                                      <h3><a href="#">Nicki Minaj lança clipe de “Barbie Dreams”. Confira!</a></h3>
+                                      <p>Em 10/10/2018</p>
+                                  </div>
+                             </div>
+                          </li>
+                          <li class="col-lg-4 col-md-6">
+                              <div class="widgetNoticiasInner">
+                                  <div class="imgThumb"><a href="#"><img width="255" height="125" src="./example/example_files/annaofthenorthcat-255x125.jpg" class="attachment-noticiasThumbWidget size-noticiasThumbWidget wp-post-image" alt=""></a></div>
+                                  <div class="contetNoticias">
+                                      <strong>Música, </strong>
+                                      <h3><a href="#">Anna Of The North conquista público brasileiro com “Lovers”</a></h3>
+                                      <p>Em 10/10/2018</p>
+                                  </div>
+                             </div>
+                          </li>
+                          <li class="col-lg-4 col-md-6">
+                              <div class="widgetNoticiasInner">
+                                  <div class="imgThumb"><a href="#"><img width="255" height="125" src="./example/example_files/avril-lavigne--255x125.jpg" class="attachment-noticiasThumbWidget size-noticiasThumbWidget wp-post-image" alt=""></a></div>
+                                  <div class="contetNoticias">
+                                      <strong>Música, </strong>
+                                      <h3><a href="#">Acabou a espera: ouça o novo single da Avril Lavigne!</a></h3>
+                                      <p>Em 10/10/2018</p>
+                                  </div>
+                             </div>
+                          </li>
+                          <li class="col-lg-4 col-md-6">
+                              <div class="widgetNoticiasInner">
+                                  <div class="imgThumb"><a href="#"><img width="255" height="125" src="./example/example_files/imaginedragons_04-255x125.jpg" class="attachment-noticiasThumbWidget size-noticiasThumbWidget wp-post-image" alt=""></a></div>
+                                  <div class="contetNoticias">
+                                      <strong>Música, </strong>
+                                      <h3><a href="#">Imagine Dragons lança clipe com letra de “Zero”, trilha de “WiFi Ralph”. Ass</a></h3>
+                                      <p>Em 10/10/2018</p>
+                                  </div>
+                             </div>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Módulo de Últimas do Blog -->
+                <div class="module-container">
+                    <h2 class="titleModHome">Últimas do blog</h2>
+                    <div class="widget_container widget_hoost_blog">
+                        <ul class="widgetBlog">
+                          <li>
+                              <div class="imgThumb"><a href="#"><img width="860" height="400" src="./example/example_files/venomending-blogroll-1538505459077_1280w-1-860x400.jpg" class="attachment-noticiasThumbInners size-noticiasThumbInners wp-post-image" alt=""></a></div>
+                              <div class="contetNoticias">
+                                  <h4><a href="#">Bilheterias Estados Unidos: Venom estreia com força total e se torna </a></h4>
+                                  <p>Após ter tomado a primeira colocação de&nbsp;Gravidade&nbsp;no quesito bilheterias das sessões pré-estreia deste mês,&nbsp;Venom&nbsp;também destronou o épico espacial de&nbsp;Alfonso Cuarón&nbsp;em termos de melhor abertura de... <a href="#">Leia mais</a></p>
+                                  <span class="finalBlogItem">Em 10/10/2018</span>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="imgThumb"><a href="#"><img width="860" height="400" src="./example/example_files/feature-sylvester-stallone-pamer-teaser-poster-rambo-v-1300x500-860x400.jpg" class="attachment-noticiasThumbInners size-noticiasThumbInners wp-post-image" alt=""></a></div>
+                              <div class="contetNoticias">
+                                  <h4><a href="#">Rambo 5 ganha título oficial com referência ao primeiro filme</a></h4>
+                                  <p>Sylvester Stallone&nbsp;está de volta como Rambo no quinto filme da franquia. Agora, o nome oficial do longa foi divulgado oficialmente:&nbsp;Rambo 5: Last Blood&nbsp;(Rambo 5: O Último Sangue, em tradução literal). O título... <a href="#">Leia mais</a></p>
+                                  <span class="finalBlogItem">Em 10/10/2018</span>
+                              </div>
+                          </li>
+                          <li>
+                              <div class="imgThumb"><a href="#"><img width="860" height="400" src="./example/example_files/1502969861_479182_1503080386_noticia_normal-860x400.jpg" class="attachment-noticiasThumbInners size-noticiasThumbInners wp-post-image" alt=""></a></div>
+                              <div class="contetNoticias">
+                                  <h4><a href="#">Os Defensores: Charlie Cox diz que série foi muito lenta, mas ainda q</a></h4>
+                                  <p>A união de&nbsp;Demolidor,&nbsp;Jessica Jones,&nbsp;Luke Cage&nbsp;e&nbsp;Punho de Ferro&nbsp;culminou em&nbsp;Os Defensores, um dos crossovers mais antecipados do Universo Marvel desde que&nbsp;Os Vingadores&nbsp;que se juntaram. Entretanto, o resultado... <a href="#">Leia mais</a></p>
+                                  <span class="finalBlogItem">Em 10/10/2018</span>
+                              </div>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- FIM DA COLUNA PRINCIPAL -->
+
+            <!-- INÍCIO DA BARRA LATERAL -->
+            <div class="col-md-4">
+                <!-- Widget de Pedidos de Música -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_hoost_pedidos_musica">
+                        <h3 class="titleWidgets">Peça sua música</h3>
+                        <div class="sepWidgets"></div>
+                        <a href="#" title="" class="pedidoMusicaWidget">
+                            <div class="realContainerPedidos"><i class="fas fa-envelope-square"></i>
+                                <div class="containerTxtPedidos">Clique aqui e faça o seu <span>Pedido de Música</span></div>
+                            </div>
+                        </a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Widget do Mural de Recados -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_sk">
+                        <h3 class="titleWidgets">Mural de Recados</h3>
+                        <div class="sepWidgets"></div>
+                        <div id="sk_content187845">
+                            <div class="sk-comment sk-user-user recado bgC1" id="sk-187845-23"><a name="sk-comment-id23"></a>
+                                <div style="min-height: 32px;" class="sk-userdata-user"><img src="./example/example_files/f6e2a0.png" width="55" height="55" class="avatar avatar-55 cat-generator-avatar photo" alt=""><strong>João Jola</strong>
+                                    <div class="sk-little">terça-feira, ago 22. 2023 11:01 AM</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="sk-widgettext bgC2">
+                                    <div class="skwidget-comment">Amassos</div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                            <div class="sk-comment sk-user-user recado bgC1" id="sk-187845-27"><a name="sk-comment-id27"></a>
+                                <div style="min-height: 32px;" class="sk-userdata-user"><img src="./example/example_files/e2ed7b.png" width="55" height="55" class="avatar avatar-55 cat-generator-avatar photo" alt=""><strong>PauLO</strong>
+                                    <div class="sk-little">segunda-feira, set 9. 2024 10:44 PM</div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="sk-widgettext bgC2">
+                                    <div class="skwidget-comment">Testando 1 2 3</div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a name="sk_top"></a>
+                        <div class="openFormShout"><span>Deixe seu recado</span></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Widget da Enquete -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_totalpoll">
+                        <h3 class="titleWidgets">Enquete</h3>
+                        <div class="sepWidgets"></div>
+                        <div id="totalpoll-id-2409aca5f57c0e7764f2973173592688" class="totalpoll-poll-container dom-ready">
+                            <form method="post" novalidate="" class="totalpoll-view-vote">
+                                <h4 data-tp-question="" class="totalpoll-question">Como está o novo site?</h4>
+                                <div data-tp-choices="" class="totalpoll-choices"><label data-tp-choice="" class="totalpoll-choice totalpoll-choice-text last-in-row"><label class="totalpoll-choice-container"><div class="totalpoll-choice-checkbox-container"><input type="radio" name="totalpoll[choices][]" value="0" class="totalpoll-choice-checkbox"></div><div class="totalpoll-choice-content"><div class="totalpoll-choice-label">Top</div></div></label></label>
+                                    <div class="totalpoll-choice-separator"></div><label data-tp-choice="" class="totalpoll-choice totalpoll-choice-text last-in-row"><label class="totalpoll-choice-container"><div class="totalpoll-choice-checkbox-container"><input type="radio" name="totalpoll[choices][]" value="1" class="totalpoll-choice-checkbox"></div><div class="totalpoll-choice-content"><div class="totalpoll-choice-label">Bom</div></div></label></label>
+                                    <div class="totalpoll-choice-separator"></div><label data-tp-choice="" class="totalpoll-choice totalpoll-choice-text last-in-row"><label class="totalpoll-choice-container"><div class="totalpoll-choice-checkbox-container"><input type="radio" name="totalpoll[choices][]" value="2" class="totalpoll-choice-checkbox"></div><div class="totalpoll-choice-content"><div class="totalpoll-choice-label">Mediano</div></div></label></label>
+                                    <div class="totalpoll-choice-separator"></div><label data-tp-choice="" class="totalpoll-choice totalpoll-choice-text last-in-row"><label class="totalpoll-choice-container"><div class="totalpoll-choice-checkbox-container"><input type="radio" name="totalpoll[choices][]" value="3" class="totalpoll-choice-checkbox"></div><div class="totalpoll-choice-content"><div class="totalpoll-choice-label">Ruim</div></div></label></label></div>
+                                <div class="totalpoll-buttons"><button name="totalpoll[action]" value="results" class="totalpoll-button totalpoll-button-link totalpoll-button-results">Resultados</button><button name="totalpoll[action]" value="vote" class="totalpoll-button totalpoll-button-primary totalpoll-button-vote">Votar</button></div>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Widget Segue Lá -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_media_image">
+                        <h3 class="titleWidgets">Segue lá</h3>
+                        <div class="sepWidgets"></div><a href="https://instagram.com/hoostcom"><img width="255" height="510" src="./example/example_files/banner_vertical.png" class="image attachment-full size-full" alt="" style="max-width: 100%; height: auto;"></a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Widget Top 10 -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_hoost_topdez">
+                        <h3 class="titleWidgets">Top 10</h3>
+                        <div class="sepWidgets"></div>
+                        <div class="containerTop secundarioTop"><div class="thumbImgTop"><div class="subAVideo"> <img src="./example/example_files/albumart-givelove-1400px-1200x1200.jpg" width="100%"></div> </div><div class="nomeCantor"><span>#01:</span> Andy Gunner</div><div class="musicaTop">Musica: Give Love</div></div>
+                        <div class="containerTop secundarioTop"><div class="thumbImgTop"><div class="subAVideo"> <img src="./example/example_files/magic-music-album-review-marquee-magazine.jpg" width="100%"></div> </div><div class="nomeCantor"><span>#03:</span> Gennea</div><div class="musicaTop">Musica: Give a Music</div></div>
+                        <div class="containerTop secundarioTop"><div class="thumbImgTop"><div class="subAVideo"> <img src="./example/example_files/Tame-Impala-Currents.jpg" width="100%"></div> </div><div class="nomeCantor"><span>#10:</span> Run out</div><div class="musicaTop">Musica: Dont Matter</div></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Widget da Galeria de Fotos -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_media_gallery">
+                        <h3 class="titleWidgets">Galeria de fotos</h3>
+                        <div class="sepWidgets"></div>
+                        <div id="gallery-1" class="gallery galleryid-569 gallery-columns-3 gallery-size-thumbnail">
+                            <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/71aHeYnlXL._SL1500_.jpg"><img width="150" height="150" src="./example/example_files/71aHeYnlXL._SL1500_-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                            <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/20171215_071102_10272_5696.jpeg"><img width="150" height="150" src="./example/example_files/20171215_071102_10272_5696-150x150.jpeg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                            <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/a1351bb1-1733-4fd2-8c6f-00f47b15958e_rw_1920.jpg"><img width="150" height="150" src="./example/example_files/a1351bb1-1733-4fd2-8c6f-00f47b15958e_rw_1920-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <!-- Widget de Últimos Eventos -->
+                <div class="widgetContainer">
+                    <div class="widget_container widget_hoost_eventos">
+                        <h3 class="titleWidgets">Últimos eventos</h3>
+                        <div class="sepWidgets"></div>
+                        <ul id="widgetEventos"></ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM DA BARRA LATERAL -->
+        </div>
+    </div>
+</div>
+
+<!-- Módulo da Galeria de Exemplo (Largura Total) -->
+<div class="controlColorBG bgC2">
+    <div class="fotosContainer" id="moduloFotos">
+        <h2 class="titleModHome">Galeria de exemplo</h2>
+        <div class="clearfix mosaicflow" data-item-selector=".item" data-min-item-width="300">
+            <div id="gallery-2" class="gallery galleryid-630 gallery-columns-3 gallery-size-thumbnail">
+                <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/p01bqgr4.jpg"><img width="150" height="150" src="./example/example_files/p01bqgr4-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/17917315903_b94302959b_b_Selena-gomez.jpg"><img width="150" height="150" src="./example/example_files/17917315903_b94302959b_b_Selena-gomez-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/the-most-popular-music-artist-in-every-state-according-to-pandora.jpg"><img width="150" height="150" src="./example/example_files/the-most-popular-music-artist-in-every-state-according-to-pandora-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                <br style="clear: both">
+                <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/the-10-most-popular-music-artists-of-2018-so-far-according-to-nielsen.png"><img width="150" height="150" src="./example/example_files/the-10-most-popular-music-artists-of-2018-so-far-according-to-nielsen-150x150.png" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                <dl class="gallery-item"><dt class="gallery-icon portrait"><a href="./example/example_files/image-1.jpg"><img width="150" height="150" src="./example/example_files/image-1-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                <dl class="gallery-item"><dt class="gallery-icon landscape"><a href="./example/example_files/p025k871.jpg"><img width="150" height="150" src="./example/example_files/p025k871-150x150.jpg" class="attachment-thumbnail size-thumbnail" alt=""></a></dt></dl>
+                <br style="clear: both">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Módulo do Banner do App (Largura Total) -->
+<div class="controlColorBG bgC1">
+    <div class="bannerPublicidade">
+        <div class="container"><img src="./example/example_files/banner_horizontal_app.png" width="100%"></div>
+    </div>
+</div>
+
+</div>
+<div class="clearfix"></div>
+  <div class="posRodape">
+		<div class="widgetContainer"><div class="widget_container widget_nav_menu footer_widget first"><h3 class="titleWidgets">Menu</h3><div class="sepWidgets"></div><div class="menu-menu-principal-container"><ul id="menu-menu-principal-2" class="menu"><li class="menu-item-has-children"><a href="#">Sobre-nos</a>
+<ul class="sub-menu">
+	<li><a href="#">Sobre-nos</a></li>
+	<li><a href="#">Fale conosco</a></li>
+</ul>
+</li>
+<li><a href="#">Notícias</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Programação</a></li>
+<li><a href="#">Galerias de fotos</a></li>
+<li><a href="#">Eventos</a></li>
+<li><a href="#">Vídeos</a></li>
+<li><a href="#">Equipe</a></li>
+<li><a href="#">Promoções</a></li>
+<li><a href="#">Contato</a></li>
+</ul></div><div class="clearfix"></div></div></div><div class="widgetContainer"><div class="widget_container widget_hoost_social footer_widget seccond"><h3 class="titleWidgets">Curta no social</h3><div class="sepWidgets"></div>
+                <ul class="widget linksSociais">
+                    <li class="speakerBgs"><a href="#" target="_blank" class="linkSocial"><i class="fab fa-facebook-f"></i></a></li>                    <li class="speakerBgs"><a href="#" target="_blank" class="linkSocial"><i class="fab fa-twitter"></i></a></li>                                        <li class="speakerBgs"><a href="#" target="_blank" class="linkSocial"><i class="fab fa-instagram"></i></a></li>                                                                                                                                        </ul>
+		<div class="clearfix"></div></div></div><div class="widgetContainer"><div class="widget_container widget_text footer_widget thre"><h3 class="titleWidgets">Texto</h3><div class="sepWidgets"></div>			<div class="textwidget"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+</div>
+		<div class="clearfix"></div></div></div><div class="widgetContainer"><div class="widget_container widget_hoost_facebook footer_widget four"><h3 class="titleWidgets">Curta no Facebook</h3><div class="sepWidgets"></div>
+        <div class="boxFacebookWidget">
+		<div class="fb-page" data-href="https://www.facebook.com/HoostCom" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+        </div>
+		<div class="clearfix"></div></div></div><div class="widgetContainer"><div class="widget_container widget_hoost_whatsapp footer_widget"><h3 class="titleWidgets">Whatsapp</h3><div class="sepWidgets"></div>
+        <a href="https://web.whatsapp.com/send?l=en&amp;phone=+5511999999999" target="_blank" title="Whatsapp" class="buttonZap" style="float: none!important; width: 100%!important; margin: 0px!important; padding: 0px!important; position: relative!important; top: 0px!important; left: 0px!important;"><div><i class="fab fa-whatsapp"></i></div> <span class="containerZap hideMobile"><span>Fale conosco via Whatsapp:</span> <span class="nbmr">+55 11 999999999</span></span></a>
+		<div class="clearfix"></div></div></div>        <div class="clearfix"></div>
+      </div>
+      <footer class="rodape">
+        <span class="txtCopright">© Todos os direitos reservados a Hoost - 2018 ~ 2019</span>
+    <a href="http://webradio.hoost.com.br/" target="_blank" class="linkHoost" style="opacity: 0.5;">Web Rádio administrável</a>        <div class="clearfix"></div>
+      </footer>
+    </div>
+    <!-- Removendo a chamada duplicada do jQuery que foi movida para o head -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+    <!-- Adicionando os scripts do corpo do exemplo -->
+    <script src="example/example_files/bootstrap.min.js.download"></script>
+    <script src="example/example_files/jquery.easing.1.3.js.download"></script>
+    <script src="example/example_files/jquery.colorbox-min.js.download"></script>
+    <script src="example/example_files/scripts.js.download"></script>
+    <script src="example/example_files/hoostscripts.js.download"></script>
+    <script src="example/example_files/masonry.pkgd.min.js.download"></script>
+    <script src="example/example_files/jquery.c00kie.js.download"></script>
+    <script src="example/example_files/quick-chat-load.js.download"></script>
+    <script src="example/example_files/wp-embed.min.js.download"></script>
+    <script src="example/example_files/front.js.download"></script>
+    <script src="example/example_files/jquery.tosrus.js.download"></script>
+    <script src="example/example_files/main.js.download"></script>
+
+    <!-- O script.js do projeto será modificado nas próximas etapas -->
+    <script src="script.js"></script>
+</body>
+</html>
