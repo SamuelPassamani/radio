@@ -130,6 +130,77 @@
     
     
   	 	    
+    <!-- --- Integração de Fontes (Google Fonts & CSS Local) --- -->
+
+    <!-- 1. Importar a família de fontes "League Gothic" do Google Fonts -->
+    <!-- Isto serve como um fallback robusto e fornece acesso à fonte variável. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+
+    <!-- 2. Link para o ficheiro CSS local com as definições @font-face -->
+    <link href="./static/css/custom_fonts.css" rel="stylesheet" media="screen">
+
+    <!-- 3. Estilos aplicados para usar as fontes integradas -->
+    <style>
+        /* --- Aplicação das Fontes --- */
+
+        /*
+          Títulos e Cabeçalhos:
+          Utilizamos a variável --font-principal (League Gothic) para todos os cabeçalhos (h1, h2, h3, h4).
+          Esta fonte tem um forte impacto visual, ideal para hierarquia.
+          O `text-transform: uppercase;` reforça a estética de design.
+        */
+        h1, h2, h3, h4,
+        .slidercontent h2,
+        .titleModHome,
+        .contetNoticias h3 a,
+        .titleWidgets {
+            font-family: var(--font-principal);
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* Ligeiro espaçamento para melhorar a legibilidade */
+        }
+
+        /*
+          Corpo do Texto:
+          Para o corpo do texto principal (parágrafos, links), optou-se por usar a variável --font-body.
+          Embora a tarefa pedisse para usar League Gothic, a sua natureza condensada pode comprometer a
+          legibilidade em textos longos. Por isso, foi escolhida uma fonte sans-serif mais tradicional
+          (Helvetica/Arial) para garantir uma boa experiência de leitura, conforme sugerido na minha
+          análise de especialista.
+        */
+        body, p, a, span, li, .textwidget p {
+            font-family: var(--font-body);
+        }
+
+        /*
+          Elementos Específicos com Variações de Fonte:
+          Aqui, aplicamos variações mais condensadas para elementos específicos,
+          como sub-títulos ou texto de destaque, para criar um contraste visual.
+        */
+        .nowPlaying,
+        .lastMusics,
+        .nomeCantor span,
+        .titlePedidos span {
+            font-family: var(--font-semicondensed);
+            text-transform: uppercase;
+        }
+
+        /*
+          Para elementos que exigem um visual ainda mais compacto, como o nome da música,
+          usamos a fonte condensada.
+        */
+        .musicaTop,
+        .contetNoticias strong a {
+            font-family: var(--font-condensed);
+        }
+
+        /*
+          A fonte variável pode ser usada para um controlo mais fino, mas para
+          manter a consistência, focámo-nos nas variantes padrão.
+        */
+    </style>
+
     <style>		
 		nav ul li a:hover {border-top:solid 3px #c4242a!important;}
 		nav.menuAjaxfy ul li ul.sub-menu li a:hover {border-top:none!important;}

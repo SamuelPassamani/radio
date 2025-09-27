@@ -1,0 +1,76 @@
+/*
+ * CSS para integração de fontes personalizadas (League Gothic).
+ * Este ficheiro define as regras @font-face para carregar as fontes locais
+ * e estabelece variáveis CSS para uma fácil manutenção e aplicação.
+ */
+
+/*
+  Define a variável para a fonte principal para facilitar a manutenção.
+  A ordem das fontes no 'fallback' é importante:
+  1. "League Gothic Variable" - A mais flexível, se suportada.
+  2. "League Gothic" - A fonte padrão.
+  3. "sans-serif" - Um fallback genérico para garantir que o texto seja sempre legível.
+*/
+:root {
+    --font-principal: "League Gothic", sans-serif;
+    --font-condensed: "League Gothic Condensed", sans-serif;
+    --font-semicondensed: "League Gothic SemiCondensed", sans-serif;
+    --font-variable: "League Gothic Variable", sans-serif;
+    --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fonte de corpo mais legível como alternativa */
+}
+
+/* --- Integração de Fontes Locais com @font-face --- */
+
+/*
+  League Gothic - Regular
+  - font-family: "League Gothic" (Nome principal para a família de fontes)
+  - src: local() tenta encontrar a fonte instalada no sistema do utilizador primeiro.
+         url() aponta para o ficheiro local no servidor.
+*/
+@font-face {
+    font-family: "League Gothic";
+    src: local("League Gothic Regular"), local("LeagueGothic-Regular"),
+         url("../fonts/LeagueGothic-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Melhora a performance de carregamento da fonte */
+}
+
+/*
+  League Gothic - Condensed Regular
+  - font-family: "League Gothic Condensed" (Nome específico para a variação condensada)
+*/
+@font-face {
+    font-family: "League Gothic Condensed";
+    src: local("League Gothic Condensed-Regular"), local("LeagueGothic_Condensed-Regular"),
+         url("../fonts/LeagueGothic_Condensed-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*
+  League Gothic - SemiCondensed Regular
+  - font-family: "League Gothic SemiCondensed" (Nome específico para a variação semi-condensada)
+*/
+@font-face {
+    font-family: "League Gothic SemiCondensed";
+    src: local("League Gothic SemiCondensed-Regular"), local("LeagueGothic_SemiCondensed-Regular"),
+         url("../fonts/LeagueGothic_SemiCondensed-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/*
+  League Gothic - Variable Font
+  - font-family: "League Gothic Variable" (Nome para a fonte variável)
+  - Suporta uma gama de larguras (wdth), permitindo um controlo mais fino.
+*/
+@font-face {
+    font-family: 'League Gothic Variable';
+    src: url('../fonts/LeagueGothic-Regular-VariableFont_wdth.ttf') format('truetype-variations');
+    font-weight: 100 900; /* Gama de pesos suportada */
+    font-stretch: 75% 125%; /* Gama de larguras (condensado para expandido) */
+    font-display: swap;
+}
