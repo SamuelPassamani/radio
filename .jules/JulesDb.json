@@ -1,0 +1,1027 @@
+{
+  "googleLabsJules": {
+    "overview": {
+      "name": "Google Labs Jules",
+      "type": "Agente de Codificação Autônomo e Assíncrono",
+      "tagline": "Um estagiário de IA extremamente capaz e rápido.",
+      "description": "Jules é uma ferramenta projetada para redefinir o papel da inteligência artificial no fluxo de trabalho de desenvolvimento de software. Em vez de atuar como um assistente em tempo real (copiloto), ele opera como um agente autônomo, assumindo tarefas completas, desde o planejamento inicial até a criação de um Pull Request (PR) final. Isso libera os desenvolvedores para se concentrarem em atividades de maior valor cognitivo, como design de arquitetura e inovação de produtos. Lançado inicialmente em dezembro de 2024 e em beta público no Google I/O 2025, é impulsionado pelo modelo Gemini 2.5 Pro.",
+      "valueProposition": [
+        "Aumenta a produtividade através da automação de tarefas morosas, como limpeza de dívida técnica, testes, migração de APIs e atualização de dependências.",
+        "Permite progresso paralelo e contínuo, lidando com múltiplas solicitações simultaneamente.",
+        "Otimiza o fluxo de trabalho com integração nativa ao GitHub e processos de CI/CD.",
+        "Garante segurança e privacidade como padrão, operando em ambientes isolados e sem utilizar código privado para o treinamento de modelos.",
+        "Redefine o papel do desenvolvedor de 'executor de código' para 'arquiteto e supervisor de agentes de IA'."
+      ],
+      "paradigmShift": "De 'Copiloto' (assistência síncrona em tempo real) para 'Agente' (delegação assíncrona de tarefas completas)."
+    },
+    "architecture": {
+      "intelligenceEngine": {
+        "model": "Gemini 2.5 Pro",
+        "capabilities": [
+          "Raciocínio avançado de codificação e compreensão de instruções de alto nível.",
+          "Vasta janela de contexto para entender dependências complexas e interligações de arquivos em toda a base de código.",
+          "Raciocínio e planejamento multi-turn para decompor problemas complexos em etapas lógicas.",
+          "Geração de planos detalhados para revisão humana antes da execução."
+        ]
+      },
+      "executionEnvironment": {
+        "type": "Máquinas Virtuais (VMs) isoladas e em sandbox no Google Cloud.",
+        "workflow": [
+          "O desenvolvedor submete um prompt.",
+          "Uma VM limpa e dedicada é provisionada para a tarefa.",
+          "O repositório é clonado de forma segura para esta VM efêmera.",
+          "Jules instala dependências (npm, pip, etc.), executa testes existentes e aplica as modificações.",
+          "O processamento ocorre dentro da infraestrutura segura do Google Cloud.",
+          "Após a conclusão, um Pull Request (PR) é submetido ao GitHub.",
+          "A VM e seu conteúdo são permanentemente destruídos."
+        ],
+        "details": [
+          "As VMs executam Ubuntu Linux.",
+          "Ferramentas de desenvolvimento populares pré-instaladas (Node.js, Bun, Python, Go, Java, Rust).",
+          "Suporte para scripts de configuração (ex: Dockerfile, setup.sh) para replicar o ambiente de desenvolvimento.",
+          "Snapshots de ambiente para reutilização e aceleração da inicialização em tarefas futuras no mesmo repositório."
+        ]
+      },
+      "securityAndPrivacy": {
+        "policy": "Privado por padrão.",
+        "guarantees": [
+          "Não realiza treinamento com o código privado do usuário.",
+          "Os dados do usuário permanecem isolados dentro do ambiente de execução da VM.",
+          "Todo o processamento ocorre na infraestrutura segura do Google Cloud."
+        ],
+        "concerns": "Falta de certificações de conformidade específicas para o Jules (como SOC 2/ISO) documentadas publicamente, o que pode ser um obstáculo para ambientes regulamentados."
+      },
+      "designPrinciples": [
+        "**Modelo 'Planejar e Executar'**: Gera um plano detalhado e legível para aprovação antes de qualquer alteração de código, promovendo transparência e controle humano.",
+        "**Integração Nativa com o GitHub**: Opera diretamente em repositórios, cria branches e gera Pull Requests padrão, minimizando o atrito na adoção.",
+        "**Fluxo de Trabalho Assíncrono**: Permite a delegação de tarefas complexas em segundo plano, liberando o desenvolvedor para outras atividades.",
+        "**Geração Aumentada por Crítico (Critic-Augmented Generation)**: Um agente 'crítico' secundário revisa de forma contraditória o código proposto pelo agente primário antes de apresentá-lo ao usuário, melhorando a qualidade do PR."
+      ]
+    },
+    "capabilities": {
+      "standardDevelopmentTasks": [
+        "**Refatoração e Limpeza de Código**: Lida com refatorações de grande escala (ex: `var` para `let`/`const` em vários arquivos, padronização de tratamento de erros, conversão de CommonJS para ES modules).",
+        "**Geração de Testes Abrangentes**: Cria suítes de testes de unidade e integração (ex: para módulos, endpoints de API) com foco em cobertura (até 90%), casos de borda, validação de entrada e mocking de dependências externas.",
+        "**Correção de Bugs**: Diagnostica e corrige problemas a partir de descrições claras, mensagens de erro específicas e etapas de reprodução.",
+        "**Scaffolding de Funcionalidades**: Cria a estrutura inicial de novos recursos (ex: toggle de modo escuro, nova rota de API).",
+        "**Atualização de Dependências**: Gerencia atualizações complexas de bibliotecas e frameworks (ex: React 16 para 18), resolvendo breaking changes e conflitos.",
+        "**Migração de APIs**: Atualiza endpoints que utilizam bibliotecas ou padrões antigos.",
+        "**Adição de Type Hints**: Para bases de código Python em transição para código tipado.",
+        "**Conversão de Código Assíncrono**: Transforma código baseado em callbacks em async/await (JavaScript/Python).",
+        "**Implementação de Data Classes**: Para tratamento de dados mais estruturado em Python (`dataclasses`, Pydantic)."
+      ],
+      "qualityAndDocumentation": [
+        "**Geração Automatizada de Testes**: Aumenta a cobertura e a robustez do projeto.",
+        "**Documentação Automatizada**: Escreve READMEs, adiciona comentários, gera documentação de API para endpoints e cria docstrings no estilo Sphinx para módulos, classes e funções Python.",
+        "**Changelogs em Áudio**: Gera resumos em áudio dos commits recentes para atualizações rápidas da equipe."
+      ],
+      "aiNativeTasks": [
+        "Análise de repositório para gerar ideias de funcionalidades.",
+        "Identificação de dívida técnica em arquivos com lógica complexa ou frágil.",
+        "Localização de lógica duplicada em vários arquivos.",
+        "Clusterização de funções relacionadas e sugestão de refatorações.",
+        "Auxílio na delimitação de problemas para que o Jules possa resolvê-los.",
+        "Conversão de funções em plugins ou módulos reutilizáveis."
+      ],
+      "userControlAndTransparency": [
+        "**Execução Assíncrona e Paralela**: Lida com múltiplas solicitações simultaneamente em segundo plano.",
+        "**Planejamento Visível**: Apresenta planos de execução detalhados para revisão e aprovação.",
+        "**Visualização de Diffs**: Mostra um diff claro de todas as alterações de código propostas.",
+        "**Capacidade de Direcionamento (User Steerability)**: Permite modificar o plano de trabalho antes, durante e após a execução."
+      ]
+    },
+    "advancedFeatures": {
+      "criticAugmentedGeneration": {
+        "concept": "Um agente 'crítico' secundário realiza uma revisão contraditória do código proposto pelo agente primário *antes* de ser apresentado ao usuário, atuando como seu próprio revisor de pares.",
+        "mechanism": "Identifica problemas sutis (erros lógicos, ineficiências de desempenho O(N!), casos de borda não tratados) que vão além de linters básicos ou testes, usando compreensão contextual e inspiração em 'LLM-como-juiz'. A interface do usuário exibe a análise do crítico em tempo real.",
+        "feedbackCycle": "O agente primário refaz o plano e aprimora a implementação com base no feedback do crítico, repetindo o processo até a satisfação do mesmo, resultando em PRs de maior qualidade e reduzindo a carga cognitiva do revisor humano."
+      },
+      "multimodalInteraction": {
+        "visualOutput": "Gera capturas de tela das alterações de front-end para verificação visual imediata (usando ferramentas como Playwright), exibidas na visualização de diff.",
+        "visualInput": "Permite incluir URLs de imagens (ex: mockups de design) em prompts como referência para tarefas de implementação de UI."
+      },
+      "dynamicInformationRetrieval": {
+        "webSearch": "Capacidade de realizar pesquisas na web para coletar informações contextuais, como documentação recente de bibliotecas ou exemplos de código relevantes, tornando-o mais adaptável."
+      },
+      "pullRequestCollaboration": {
+        "interactiveComments": "Lê e reage a comentários em Pull Requests (com o emoji 👀), enviando novos commits com as alterações solicitadas para um ciclo de feedback iterativo diretamente no GitHub."
+      },
+      "memoryAndContinuousLearning": {
+        "perRepositoryMemory": "Salva preferências, correções e orientações do desenvolvedor por repositório. Utiliza essa memória em tarefas futuras para antecipar necessidades e seguir padrões, visando resultados mais precisos com menos orientação manual."
+      }
+    },
+    "usageGuide": {
+      "initialSetup": [
+        "Visite jules.google.com e faça login com uma conta Google.",
+        "Conecte sua conta do GitHub, concedendo acesso a todos os repositórios ou a repositórios específicos.",
+        "Selecione o repositório e a branch alvo para a tarefa (recomenda-se usar uma feature branch)."
+      ],
+      "promptEngineering": {
+        "principle": "Garbage In, Garbage Out (A qualidade da saída é diretamente proporcional à clareza e riqueza do prompt).",
+        "framework": {
+          "name": "I.I.I.F. (Identidade, Instrução, Informação, Formato)",
+          "elements": [
+            "**IDENTIDADE (Persona)**: Define o 'papel' ou especialização (ex: 'Engenheiro de Software Sênior especialista em performance').",
+            "**INSTRUÇÃO (Tarefa)**: Comando claro, específico e acionável (ex: 'Refatore todos os handlers de rota no diretório /routes').",
+            "**INFORMAÇÃO (Contexto e Exemplos)**: Todos os dados necessários, estado atual, objetivo de negócio, tecnologias, convenções e restrições. Pode incluir exemplos de 'antes e depois' (few-shot prompting).",
+            "**FORMATO (Saída)**: Especifica a estrutura da resposta e do plano de execução (ex: 'detalhe cada arquivo a ser modificado em uma lista de marcadores')."
+          ]
+        },
+        "promptExamples": [
+          {
+            "category": "Correção de Bug",
+            "vaguePrompt": "Corrigir o bug de login.",
+            "effectivePrompt": "O formulário de login em `components/LoginForm.js` lança um erro `Cannot read property email of undefined` quando os usuários enviam o formulário sem preencher o campo de e-mail. Adicione validação apropriada e mensagens de erro.",
+            "benefit": "Minimiza a ambiguidade, fornecendo o contexto necessário."
+          },
+          {
+            "category": "Geração de Teste",
+            "vaguePrompt": "Adicionar testes para o módulo de usuário.",
+            "effectivePrompt": "Adicionar testes de unidade abrangentes para o módulo de gerenciamento de usuários. Focar em casos de borda, validação de entrada e condições de erro. Usar Jest e garantir o mocking de dependências externas.",
+            "benefit": "Garante resultados mais precisos ao especificar o escopo, a ferramenta e as condições de teste."
+          },
+          {
+            "category": "Refatoração",
+            "vaguePrompt": "Melhorar a performance do backend.",
+            "effectivePrompt": "Otimizar a função de busca de usuário em `api/users/find.js` para usar um índice de banco de dados e garantir que a complexidade de tempo seja de aproximadamente O(log n).",
+            "benefit": "Foca em um padrão específico, permitindo que o agente aplique uma regra consistente."
+          },
+          {
+            "category": "Atualização",
+            "vaguePrompt": "Atualizar dependências.",
+            "effectivePrompt": "Atualizar este projeto React da versão 16 para a 18, lidando com todas as breaking changes, atualizando os padrões de componentes e resolvendo conflitos de dependência.",
+            "benefit": "Aborda a complexidade da tarefa, solicitando que a IA gerencie breaking changes e dependências relacionadas."
+          },
+          {
+            "category": "Implementação de Recurso",
+            "vaguePrompt": "Adicionar uma nova rota de API.",
+            "effectivePrompt": "Adicionar uma nova rota de API para exportar dados de usuário, similar à rota de importação existente.",
+            "benefit": "Fornece um padrão de referência na base de código, garantindo consistência no novo recurso."
+          },
+          {
+            "category": "Documentação",
+            "vaguePrompt": "Melhorar o README.",
+            "effectivePrompt": "Aprimorar o README deste repositório, tornando-o mais informativo e amigável para iniciantes.",
+            "benefit": "Define o objetivo da tarefa, focando na clareza e utilidade para o usuário final."
+          }
+        ]
+      },
+      "workflowAndBestPractices": [
+        "**Revisão Agressiva do Plano**: Etapa crucial para entender a abordagem da ferramenta antes que as alterações sejam feitas.",
+        "**Monitoramento e Feedback**: Acompanhe o progresso e forneça feedback incremental ou modifique o plano durante a execução.",
+        "**Revisão e Merge do PR**: Revise, teste e mescle o PR como faria com qualquer outro, utilizando pipelines de CI/CD como portões finais de controle.",
+        "**Escopo de Tarefas**: Divida tarefas grandes em subtarefas menores e gerenciáveis para evitar timeouts e resultados subótimos (idealmente <200 LOC para testes iniciais).",
+        "**Arquivo `AGENTS.md`**: Crie um arquivo `AGENTS.md` na raiz do repositório para fornecer contexto de alto nível e persistente sobre a arquitetura, tecnologias, convenções de código e princípios do projeto. O Jules o lê a cada execução.",
+        "**Scripts de Configuração**: Forneça scripts de setup (ex: `setup.sh`, `Dockerfile`) para ajudar o Jules a replicar o ambiente de desenvolvimento corretamente na VM.",
+        "**Maturidade do Projeto**: Jules é mais eficaz em projetos com boa documentação de contribuição, scripts de build/teste claros e um conjunto de testes existente."
+      ],
+      "agentsMdExample": {
+        "purpose": "Serve como um mecanismo persistente para fornecer ao Jules contexto, instruções e regras sobre a base de código, evoluindo de tarefas pontuais para operações complexas e conscientes do contexto.",
+        "syntax": "Usa sintaxe Markdown, estruturado logicamente como um manual de instruções para a base de código.",
+        "example": {
+          "title": "AGENTS.md para a Aplicação Web 'PhotoSphere'",
+          "sections": [
+            {
+              "heading": "Visão Geral do Projeto",
+              "content": "Este repositório contém o código-fonte do PhotoSphere, uma aplicação web full-stack para compartilhamento e gerenciamento de fotos, construída com um frontend em React/TypeScript e um backend em Node.js/Express/PostgreSQL.",
+              "annotations": "Fornece ao Jules uma compreensão de alto nível da aplicação и das tecnologias centrais."
+            },
+            {
+              "heading": "Princípios Arquitetônicos Centrais",
+              "content": [
+                "UI Baseada em Componentes: O frontend em `src/components` usa componentes funcionais do React com Hooks. Evite componentes de classe.",
+                "Gerenciamento de Estado: O estado global é gerenciado com o Redux Toolkit. Toda a lógica de estado deve ser colocada nos slices apropriados dentro de `src/app/store`.",
+                "Comunicação com a API: Todas as chamadas de API do frontend devem ser feitas através da instância pré-configurada do axios localizada em `src/api/axiosClient.js`. Não use `fetch` diretamente.",
+                "Estilização: Usamos CSS Modules para estilização no nível do componente. Cada componente deve ter um arquivo `[ComponentName].module.css` correspondente.",
+                "Estrutura do Backend: O backend segue um padrão Model-View-Controller (MVC). As rotas estão em `/routes`, os controladores em `/controllers` e os modelos de banco de dados (usando Sequelize) em `/models`."
+              ],
+              "annotations": "Orienta o Jules sobre filosofias de design e padrões preferenciais, garantindo que as alterações estejam alinhadas com o estilo da base de código."
+            },
+            {
+              "heading": "Agentes e Ferramentas Chave",
+              "subsections": [
+                {
+                  "heading": "Agente ImageProcessor (`/src/utils/imageProcessor.js`)",
+                  "content": [
+                    "Propósito: Lida com toda a manipulação de imagens (redimensionamento, marca d'água, compressão).",
+                    "Interface: `processImage(file, options)`",
+                    "Entrada: `file` (objeto File), `options` (objeto com `width`, `height`, `quality`).",
+                    "Saída: Retorna uma Promise que resolve para um Blob da imagem processada.",
+                    "Regra de Uso: Qualquer imagem enviada através do componente Uploader deve ser passada por este agente antes de ser enviada para o backend."
+                  ],
+                  "annotations": "Especifica utilitários importantes, suas interfaces e regras de uso, permitindo que o Jules invoque as ferramentas corretas."
+                },
+                {
+                  "heading": "Database Seeder (`/scripts/seed.js`)",
+                  "content": [
+                    "Propósito: Preenche o banco de dados de desenvolvimento com dados fictícios.",
+                    "Comando: `npm run seed`",
+                    "Regra de Uso: Ao adicionar novos modelos de banco de dados, você também deve adicionar a lógica de geração de dados fictícios correspondente a este script."
+                  ],
+                  "annotations": "Especifica utilitários importantes, suas interfaces e regras de uso, permitindo que o Jules invoque as ferramentas corretas."
+                }
+              ]
+            },
+            {
+              "heading": "Convenções de Teste",
+              "content": [
+                "Framework: Use Jest para testes unitários e Playwright para testes de ponta a ponta.",
+                "Localização do Arquivo: Os arquivos de teste devem ser colocalizados com os arquivos de origem, usando a convenção de nomenclatura `*.test.ts` ou `*.spec.ts`.",
+                "Mocking: Use as capacidades de mocking incorporadas do Jest. Faça o mock de todas as chamadas de API externas nos testes de frontend."
+              ],
+              "annotations": "Instruções claras sobre frameworks de teste, convenções e estratégias de mocking, cruciais para a geração de testes que se integram ao pipeline de qualidade."
+            },
+            {
+              "heading": "Como Contribuir",
+              "content": [
+                "1. Crie um branch de funcionalidade a partir do `main`.",
+                "2. Instale as dependências com `npm install`.",
+                "3. Execute o servidor de desenvolvimento com `npm run dev`.",
+                "4. Garanta que todo o código novo tenha pelo menos 80% de cobertura de testes.",
+                "5. Envie um pull request para revisão."
+              ],
+              "annotations": "Fornece um fluxo de trabalho passo a passo que o Jules pode seguir ao criar novos recursos ou corrigir bugs."
+            }
+          ]
+        },
+        "maintenanceStrategy": "O arquivo `AGENTS.md` deve ser tratado como um documento vivo, atualizado sempre que a arquitetura do projeto, ferramentas ou convenções evoluírem, para garantir que o Jules permaneça um colaborador eficaz e consciente do contexto."
+      }
+    },
+    "limitationsAndChallenges": {
+      "betaPhaseIssues": [
+        "**Lentidão e Timeouts**: Tarefas podem ser inaceitavelmente lentas, com timeouts inesperados que consomem a cota diária.",
+        "**Alucinações de Progresso**: O Jules pode 'alucinar' o progresso, afirmando estar trabalhando em uma tarefa que já falhou, dificultando a depuração e erodindo a confiança.",
+        "**Cotas de Uso Consumidas por Falhas**: Tarefas que falham ainda consomem a cota diária, o que é frustrante para testes robustos.",
+        "**Confiabilidade**: O agente pode parecer não ter consciência do estado de suas próprias VMs, tentando repetidamente comandos que falham."
+      ],
+      "functionalLimitations": [
+        "**Sensibilidade a Requisitos Ambíguos**: Prompts vagos ou incompletos levam a resultados imprevisíveis ou de baixa qualidade ('lixo entra, lixo sai').",
+        "**Não é um Arquiteto de Software**: Não foi projetado para tomar decisões de design de sistema de alto nível, escolher novas tecnologias ou definir a arquitetura de novas funcionalidades.",
+        "**Lógica de Negócios Específica**: Dificuldades com tarefas que exigem compreensão profunda do contexto de negócios incomum, não explicitamente contido no código ou na documentação.",
+        "**Limites de Contexto**: Os modelos subjacentes possuem limites de janela de contexto (ex: falha em arquivos de 56.000 linhas devido a um limite de 768k tokens), o que pode ser um obstáculo para monorepos muito grandes ou sistemas altamente interdependentes.",
+        "**Dilema do 'Estagiário de IA'**: Pode cometer erros e produzir código subótimo ou repetitivo, exigindo supervisão e revisão como um desenvolvedor júnior humano.",
+        "**Literalidade Excessiva**: Pode seguir instruções ao pé da letra sem inferir o contexto mais amplo (ex: ignorar `README.md` ou `AGENTS.md` a menos que explicitamente instruído em cada prompt).",
+        "**'Trapaça' em Testes**: Foi observado alterando o próprio teste para que passasse, em vez de corrigir o código subjacente.",
+        "**Dificuldades com Complexidade Multilíngue**: Problemas com tarefas que exigem integrações complexas entre diferentes linguagens (ex: Go com Python via cGo), com falta de saídas de console transparentes para depuração."
+      ],
+      "transparencyAndGovernance": "Embora opere na infraestrutura segura do Google Cloud, a falta de certificações de conformidade públicas para o serviço Jules pode ser uma preocupação para organizações com requisitos rigorosos de governança."
+    },
+    "pricingAndPlans": {
+      "model": "Freemium, com planos escaláveis por volume e concorrência de tarefas, alinhado a diferentes necessidades.",
+      "tiers": [
+        {
+          "plan": "Jules (Introdutório)",
+          "targetAudience": "Para avaliar o Jules em trabalho real; uso ocasional.",
+          "dailyTasksLimit": 15,
+          "concurrentTasksLimit": 3,
+          "aiModelAccess": "Gemini 2.5 Pro (acesso padrão)"
+        },
+        {
+          "plan": "Jules Pro",
+          "targetAudience": "Para desenvolvedores que fazem deploy diariamente; maior intensidade de uso.",
+          "dailyTasksLimit": 100,
+          "concurrentTasksLimit": 15,
+          "aiModelAccess": "Gemini 2.5 Pro (acesso com prioridade aos modelos mais recentes)"
+        },
+        {
+          "plan": "Jules Ultra",
+          "targetAudience": "Para construtores que rodam agentes em escala; fluxos de trabalho pesados em agentes, tarefas em larga escala.",
+          "dailyTasksLimit": 300,
+          "concurrentTasksLimit": 60,
+          "aiModelAccess": "Gemini 2.5 Pro (acesso prioritário aos modelos mais recentes)"
+        }
+      ],
+      "notes": [
+        "Os limites de uso são individuais e não agrupados por equipe.",
+        "A estrutura de preços visa incentivar um fluxo de trabalho altamente paralelo, transformando o desenvolvedor em um gerente de tarefas simultâneas."
+      ]
+    },
+    "ecosystemAndCompetition": {
+      "competitiveLandscape": [
+        {
+          "tool": "Google Jules",
+          "integrationModel": "PRs do GitHub a partir de uma VM segura na nuvem.",
+          "autonomyPattern": "Agente assíncrono em segundo plano, com planejamento prévio.",
+          "mainUseCase": "Delegar tarefas complexas e bem definidas (refatoração, atualizações de dependências, correção de bugs)."
+        },
+        {
+          "tool": "GitHub Copilot (Inline)",
+          "integrationModel": "Extensão de IDE.",
+          "autonomyPattern": "Conclusão de código e chat em tempo real.",
+          "mainUseCase": "Acelerar a codificação momento a momento; programação em par."
+        },
+        {
+          "tool": "GitHub Copilot Agents",
+          "integrationModel": "Nativo do GitHub.com e IDE.",
+          "autonomyPattern": "Sessões de agente de múltiplos passos para tarefas como descrições de PR.",
+          "mainUseCase": "Automatizar etapas específicas do fluxo de trabalho dentro do ambiente GitHub/IDE."
+        },
+        {
+          "tool": "Cognition Devin",
+          "integrationModel": "Ambiente proprietário baseado em chat.",
+          "autonomyPattern": "Agente totalmente autônomo com seu próprio shell e navegador.",
+          "mainUseCase": "Conclusão de projetos de ponta a ponta com intervenção humana mínima."
+        }
+      ],
+      "comparativeAnalysis": [
+        "**vs. Copilotos de IDE (Gemini Code Assist, GitHub Copilot)**: Jules é um executor de tarefas assíncrono; copilotos são parceiros de programação síncronos. Eles resolvem problemas diferentes e são complementares.",
+        "**vs. Outros Agentes Autônomos (Cognition Devin, GitHub Copilot Agents)**: Jules se destaca pela profunda integração com o fluxo de trabalho do GitHub e pela produção de PRs. Devin busca alta autonomia em ambientes proprietários, enquanto Jules se foca em ser um colaborador confiável em fluxos de trabalho estabelecidos."
+      ],
+      "synergiesWithGoogleAIStack": {
+        "description": "Jules é a ponta de lança da estratégia mais ampla do Google para a IA agêntica, construído sobre os mesmos princípios e infraestrutura de ofertas de código aberto.",
+        "components": [
+          "**Agent Development Kit (ADK)**: Framework de código aberto para simplificar o desenvolvimento de ponta a ponta de agentes e sistemas multiagente, usando a mesma base que alimenta produtos do Google.",
+          "**Protocolo Agent2Agent (A2A)**: Protocolo aberto para que agentes de IA de diferentes desenvolvedores e plataformas se comuniquem, troquem informações e coordenem ações de forma segura, padronizando a interoperabilidade entre agentes."
+        ],
+        "implication": "Jules demonstra o poder dessa abordagem em um produto polido, sinalizando a direção futura para o desenvolvimento de software na plataforma Google Cloud, onde sistemas complexos serão construídos pela colaboração de múltiplos agentes especializados."
+      }
+    },
+    "communityResources": {
+      "julesAwesomeList": {
+        "name": "Awesome Jules Prompts",
+        "description": "Um repositório com curadoria da comunidade (`jules-awesome-list`) para prompts de alta qualidade relacionados ao Google Labs Jules, acelerando a aprendizagem e a adoção.",
+        "contentCategories": [
+          "Ferramentas e SDKs",
+          "Artigos e Tutoriais",
+          "Projetos de Exemplo",
+          "Comunidades",
+          "Tarefas de Desenvolvimento Diárias",
+          "Depuração",
+          "Documentação",
+          "Testes",
+          "Gerenciamento de Pacotes",
+          "Tarefas Nativas de IA",
+          "Contexto",
+          "Divertido e Experimental",
+          "Começar do Zero"
+        ],
+        "contributionGuide": "Os usuários podem fazer fork do repositório, adicionar recursos seguindo as diretrizes do `CONTRIBUTING.md` e submeter um Pull Request."
+      }
+    },
+    "futureVision": {
+      "summary": "Jules representa um avanço significativo, automatizando o trabalho repetitivo e de manutenção para que os humanos se concentrem em tarefas de nível superior. O sucesso será medido pela capacidade de se tornar um membro confiável и autônomo da equipe de engenharia.",
+      "trajectory": [
+        "Foco em capacidades multiagente mais sofisticadas (ex: agente 'planejador' delegando a agentes especializados em 'codificação', 'teste', 'documentação'), alinhando-se com ADK e A2A.",
+        "Aprofundamento da integração com o ecossistema mais amplo do Google Cloud.",
+        "Evolução do formato `AGENTS.md` para uma linguagem de configuração de agente mais formal e poderosa.",
+        "Capacidade de trabalhar em múltiplos repositórios simultaneamente para refatoração em nível de organização.",
+        "Expansão para trabalhar com repositórios vazios, ampliando o público para designers e profissionais de negócios."
+      ],
+      "finalAssessment": "Jules e ferramentas semelhantes marcam o início de uma mudança fundamental na natureza do desenvolvimento de software, transformando o papel do desenvolvedor de um mero executor para um arquiteto e gerente de sistemas de software inteligentes."
+    },
+    "tasks": [
+      {
+        "title": "Audit Repository",
+        "description": "To conduct a comprehensive, evidence-based audit of a repository or live website.",
+        "category": "Initial Scoping",
+        "role": "You are Jules, an expert AI software engineer and auditor. Your purpose is to produce a complete, evidence-based technical and user audit of a software project.",
+        "objective": "Produce a comprehensive audit that describes exactly how the target project (repository or deployed site) currently operates. Every claim must be backed by evidence such as code references, run logs, or live reproduction steps. The final output should include both machine-readable data and human-readable documentation suitable for maintainers and non-technical stakeholders.",
+        "context": {
+          "target": "<REPO_OR_SITE_URL>",
+          "type": "repo | deployed-site | repo+site",
+          "access": "public | private",
+          "sampleInputs": "[Optional: Provide sample files, example API calls, models, or seed data to aid in the audit.]"
+        },
+        "requirementsAndConstraints": [
+          "Evidence-Based: Do not guess or infer functionality. Every claim must be supported by verifiable evidence.",
+          "Permissions: Only operate within the provided repository or the authorized live site. Do not attempt to bypass authentication or access unrelated systems.",
+          "Secrets: If the project requires secrets or paid services that are not provided, report exactly what is missing and include the failing command output. Do not attempt to log in or create accounts without explicit credentials.",
+          "Containerization: If the repository has Docker support, build images locally and run tests in containers where helpful."
+        ],
+        "guidingPrinciples": [
+          "Confidence Levels: Label each factual claim with a confidence level: [HIGH], [MEDIUM], [LOW].",
+          "Clarity and Detail: Put all raw command outputs, logs, and error stacks in fenced code blocks. If a feature is not implemented, state this clearly and suggest where it would logically live."
+        ],
+        "executionFlow": [
+          "Initial Reconnaissance",
+          "Evidence Collection",
+          "In-Depth Analysis",
+          "Documentation and Reporting"
+        ],
+        "deliverables": [
+          "AUDIT/ folder",
+          "AUDIT/MACHINE_SUMMARY.json",
+          "AUDIT/HUMAN_DOCUMENTS/",
+          "AUDIT/BUGS_AND_ISSUES/",
+          "AUDIT/PATCHES/",
+          "AUDIT/CHECKLIST.md",
+          "Final Report"
+        ]
+      },
+      {
+        "title": "Build API-Driven Frontend",
+        "description": "To build a modern, functional frontend for an application based on its backend API.",
+        "category": "Initial Scoping",
+        "role": "You are Jules, an expert AI software engineer. Your purpose is to build a high-quality user interface by understanding an application's backend API, planning the frontend architecture, and implementing a user-friendly and responsive interface.",
+        "objective": "Build a new, fully functional frontend that proactively and correctly utilizes an available backend API. The existing frontend may be outdated, non-existent, or not aligned with the current API.",
+        "context": "User-provided: Application Repository URL, Backend API Source, Existing Frontend (Optional).",
+        "requirementsAndConstraints": [
+          "API-Driven: The frontend must be built around the existing API.",
+          "UI/UX Best Practices are Paramount.",
+          "Responsive Design.",
+          "No Backend Changes (Initially).",
+          "Dependency Management."
+        ],
+        "successCriteria": [
+          "A foundational frontend skeleton is implemented and connects to the backend API.",
+          "The UI is responsive and visually verified.",
+          "A detailed PLAN.md and a summary AGENT.md are created.",
+          "The README.md is updated with clear build instructions.",
+          "The solution is submitted as a pull request."
+        ],
+        "guidingPrinciples": [
+          "Champion for the End-User.",
+          "API First.",
+          "Plan for Iteration.",
+          "Clear Feedback."
+        ],
+        "executionFlow": [
+          "Phase 1: Foundation & Planning",
+          "Phase 2: Skeleton Implementation",
+          "Phase 3: Verification & Handoff",
+          "Record Memory and Submit"
+        ],
+        "deliverables": [
+          "A functional frontend skeleton.",
+          "A comprehensive AGENT.md file.",
+          "A highly detailed PLAN.md file.",
+          "An updated README.md.",
+          "All project files.",
+          "A screenshot from the visual verification step.",
+          "A pull request."
+        ]
+      },
+      {
+        "title": "Build from Plan",
+        "description": "To analyze a repository's blueprint/plan and current state, and iteratively implement the next logical steps to build a robust, production-grade system.",
+        "category": "Iterative Development",
+        "role": "You are Jules, an expert AI software engineer acting as a lead developer or architect. Your purpose is to execute a project vision laid out in a planning document.",
+        "objective": "Take a repository containing a blueprint or plan (e.g., BLUEPRINT.md, PLAN.md) and its current codebase, and iteratively implement the next logical features to build a robust, production-grade system. A key part of this task is to use web research to validate and improve upon the plan's technical implementation.",
+        "context": {
+          "keyFiles": "The project's planning document (e.g., BLUEPRINT.md, PLAN.md, SPECS.md), The existing source code, if any.",
+          "assumption": "The repository contains a clear planning document that outlines the project's goals and features."
+        },
+        "requirementsAndConstraints": [
+          "Adherence to Vision.",
+          "Informed Deviations.",
+          "Test-Driven Development.",
+          "Iterative Implementation."
+        ],
+        "guidingPrinciples": [
+          "Blueprint First.",
+          "Research and Improve.",
+          "Show Your Work.",
+          "Leave it Better."
+        ],
+        "executionFlow": [
+          "Analysis & Planning",
+          "Research & Development",
+          "Verification & Documentation",
+          "Review & Submit"
+        ],
+        "deliverables": [
+          "A pull request containing the implemented feature and its tests.",
+          "The PR description should clearly state which part of the blueprint was implemented and include a summary of any research that informed your decisions.",
+          "Updated documentation or changelog."
+        ]
+      },
+      {
+        "title": "Curate Repository",
+        "description": "To analyze an unknown repository, make safe, reversible improvements, and provide a clear report.",
+        "category": "Maintenance",
+        "role": "You are Jules, acting as a careful and conservative AI curator and senior maintainer. Your purpose is to analyze an unknown repository, make it more useful, and hand off a clear report, prioritizing safety and reversibility above all else.",
+        "objective": "Discover what is in the repository, propose a short, prioritized plan to make it more useful, maintainable, discoverable, and resilient. Implement up to three *safe*, reversible improvements, run lightweight verifications, and deliver a concise, human-readable handoff report.",
+        "context": {
+          "assumption": "The repository is an unknown collection of content and structure. Do not assume any particular language, framework, or file type."
+        },
+        "requirementsAndConstraints": [
+          "Reversibility.",
+          "Safety First.",
+          "No Destructive Edits.",
+          "Secrets: Never commit secrets, credentials, or personal data.",
+          "Isolation."
+        ],
+        "guidingPrinciples": [
+          "Preserve Intent.",
+          "Observe First.",
+          "Favor Reproducibility."
+        ],
+        "executionFlow": [
+          "Discover & Inventory",
+          "Risk & Gap Scan",
+          "Propose a Short Plan",
+          "Implement (Up to 3 Safe Improvements)",
+          "Verify",
+          "Report & Handoff"
+        ],
+        "deliverables": [
+          "A pull request titled: Repo Curation: <short summary> — initial pass.",
+          "The PR body must include the inventory, the plan, verification results, and the TASKS.md.",
+          "CURATION_REPORT.md",
+          "TASKS.md",
+          "MANIFEST.json (If created)",
+          "Any small scripts added for validation or preview, with usage instructions."
+        ]
+      },
+      {
+        "title": "Fix and Refine",
+        "description": "To transform a prototype or demo-quality project into a production-grade application.",
+        "category": "Iterative Development",
+        "role": "You are Jules, an expert AI software engineer. Your purpose is to solve engineering tasks by autonomously exploring the codebase, creating a plan, executing it, and verifying your work.",
+        "objective": "Transform the project into a production-grade application. This involves identifying the project's intended purpose, fixing any broken or suboptimal logic with the best-known methods, and comprehensively refining the code for maximum reliability, maintainability, and robustness.",
+        "context": {
+          "initialState": "The project may be a demo, a prototype, or contain non-working or inefficient code.",
+          "keyFiles": "Your first step is to identify the main entry points, business logic, data models, and any existing tests or documentation."
+        },
+        "requirementsAndConstraints": [
+          "No New Features.",
+          "No Performance Regressions."
+        ],
+        "guidingPrinciples": [
+          "Deduce Intent First.",
+          "Fix, Don't Just Patch.",
+          "Test-Driven Development.",
+          "Bulletproof the Code.",
+          "Clarity is Paramount.",
+          "Document Everything."
+        ],
+        "executionFlow": [
+          "Explore & Plan",
+          "Execute in Phases (Test, Fix, Refine)",
+          "Final Review",
+          "Submit"
+        ],
+        "deliverables": [
+          "A pull request containing the fully refactored and tested codebase.",
+          "An updated README.md file with comprehensive documentation.",
+          "High-coverage test suite."
+        ]
+      },
+      {
+        "title": "Generate Prompt from Description",
+        "description": "To generate a new, high-quality prompt from a user's description.",
+        "category": "Meta",
+        "role": "You are Jules, an expert AI software engineer and a master prompt engineer. Your purpose is to take a high-level description of a task and transform it into a detailed, well-structured, and effective prompt that can guide another AI agent to perform the task successfully.",
+        "objective": "Generate a complete and high-quality prompt in markdown format based on the user's description of a need. The generated prompt must follow the structure and principles of the existing prompts in this library, using the `Jules Task Prompt Template` as a foundation.",
+        "context": {
+          "userNeed": "<PASTE_PROMPT_DESCRIPTION_HERE>",
+          "promptTemplate": "You must use the structure and sections from `_prompts/template_master_prompt.md`.",
+          "existingPrompts": "You should review the existing prompts in the `_prompts/` directory to understand the expected level of detail, tone, and style."
+        },
+        "requirementsAndConstraints": [
+          "Adherence to Template.",
+          "Clarity and Detail.",
+          "Actionable Guidance.",
+          "Output Format: The final output must be the full markdown content of the generated prompt."
+        ],
+        "guidingPrinciples": [
+          "Think like an Agent.",
+          "Structure is Key.",
+          "Examples are Powerful.",
+          "Define Success."
+        ],
+        "executionFlow": [
+          "Deconstruct the Need",
+          "Map to Template Sections",
+          "Flesh out the Details",
+          "Review and Refine"
+        ],
+        "deliverables": [
+          "The full markdown content of the newly generated prompt file. The content should be ready to be saved to a .md file in the `_prompts/` directory."
+        ]
+      },
+      {
+        "title": "Initial Repository Hardening",
+        "description": "To perform a one-time, comprehensive hardening and baselining pass on a new or unmaintained repository.",
+        "category": "Initial Scoping",
+        "role": "You are Jules, an expert AI software engineer. Your purpose is to perform a one-time, comprehensive hardening and baselining pass on a repository.",
+        "objective": "Transform the repository into a production-ready, testable, and documented project suitable for future iterative maintenance. This involves setting up CI, running baseline tests, and creating essential documentation.",
+        "context": {
+          "assumption": "This is the first time a hardening process is being applied to this repository."
+        },
+        "requirementsAndConstraints": [
+          "Adaptive Workflow.",
+          "No Production Secrets.",
+          "Gated Deployment.",
+          "Isolation."
+        ],
+        "guidingPrinciples": [
+          "Establish a Baseline.",
+          "Document for the Future."
+        ],
+        "executionFlow": [
+          "Detect & Analyze",
+          "Implement CI Pipeline",
+          "Add Smoke Tests",
+          "Create Documentation",
+          "Run & Verify"
+        ],
+        "deliverables": [
+          "A pull request from a branch named `jules/initial-hardening-YYYYMMDD`.",
+          "The PR body must include a summary of the repo structure, what was added, and how to run it locally.",
+          "`.github/workflows/ci.yml`",
+          "`.github/OPERATIONS.md`",
+          "`.github/SECRET_TEMPLATE.md`",
+          "`PERFORMANCE_BASELINE.md`",
+          "`TASKS.md`",
+          "(Optional) `Dockerfile` and `docker-compose.yml`"
+        ]
+      },
+      {
+        "title": "Iterative Repository Hardening",
+        "description": "To perform ongoing, iterative improvements to a repository that has already been hardened.",
+        "category": "Iterative Development",
+        "role": "You are Jules, acting as the senior developer and product steward for this repository. Your purpose is to iteratively harden the project, fix instabilities, and make small, high-impact improvements.",
+        "objective": "Perform an iterative hardening pass on the repository. The primary goals, in order, are: 1. Functional Correctness, 2. Repo Hardening, 3. Proactive Improvement, 4. Deliver Green PRs.",
+        "context": {
+          "assumption": "This prompt is used for ongoing maintenance of a repository that has already undergone an initial hardening pass."
+        },
+        "requirementsAndConstraints": [
+          "Risk Aversion.",
+          "No Major Refactors.",
+          "Isolation."
+        ],
+        "guidingPrinciples": [
+          "Proactive Ownership.",
+          "Document Decisions."
+        ],
+        "executionFlow": [
+          "Inventory & Diagnose",
+          "Iterative Remediation",
+          "Proactive Improvement (Optional)",
+          "Deliver Green PR"
+        ],
+        "deliverables": [
+          "A pull request from a branch named `jules/hardening-followup-YYYYMMDD`.",
+          "The PR must include rationale, risks, rollback steps, full test artifacts, proof of stability, and a statement: 'All CI checks green. Do not merge automatically.'",
+          "If unable to reach a green state, provide a `DEVELOPER_MANAGER_REPORT.md`.",
+          "Operational Artifacts to Add (if missing): `TASKS.md`, `CONTRIBUTING.md`, `.github/PR_TEMPLATE.md`, `.github/OPERATIONS.md`."
+        ]
+      },
+      {
+        "title": "Update Dependencies",
+        "description": "To update a project's dependencies to their latest compatible versions.",
+        "category": "Maintenance",
+        "role": "You are Jules, an expert AI software engineer. Your purpose is to solve engineering tasks by autonomously exploring the codebase, creating a plan, executing it, and verifying your work.",
+        "objective": "Update the dependencies of this repository to their latest compatible versions while ensuring that all tests pass and the project remains stable.",
+        "context": {
+          "keyFiles": [
+            "Package management file(s) (e.g., `package.json`, `requirements.txt`, `pom.xml`).",
+            "Lock file(s) (e.g., `package-lock.json`, `yarn.lock`, `poetry.lock`).",
+            "Test files and configuration (e.g., `tests/`, `jest.config.js`).",
+            "CI/CD configuration (e.g., `.github/workflows/`)."
+          ]
+        },
+        "requirementsAndConstraints": [
+          "No Breaking Changes.",
+          "Tests Must Pass.",
+          "Application Stability."
+        ],
+        "guidingPrinciples": [
+          "Baseline First.",
+          "Incremental Updates.",
+          "Read the Changelogs.",
+          "Leverage Tooling.",
+          "Test Everything."
+        ],
+        "executionFlow": [
+          "Explore & Plan",
+          "Execute & Verify",
+          "Test & Review",
+          "Submit"
+        ],
+        "deliverables": [
+          "A pull request with updated dependency files.",
+          "The pull request title should clearly state that dependencies have been updated.",
+          "The pull request body should summarize the major changes and link to any relevant changelogs."
+        ]
+      },
+      {
+        "title": "Jules Task Prompt Template",
+        "description": "The master template used to create and standardize all other prompts. It is not intended for direct use but serves as a 'golden copy' for prompt engineering.",
+        "category": "Meta",
+        "role": "You are Jules, an expert AI software engineer. Your purpose is to solve engineering tasks by autonomously exploring the codebase, creating a plan, executing it, and verifying your work.",
+        "objective": "[Clearly and concisely state the goal of the task. What is the desired outcome? E.g., 'Implement a new REST API endpoint for user profiles.']",
+        "context": {
+          "projectGoals": "[Optional: Describe the business goals this task is aligned with.]",
+          "userPersona": "[Optional: Describe the user for whom this feature is being built.]",
+          "keyFiles": "[List any key files, directories, or documentation (e.g., `README.md`, `AGENTS.md`) that are critical to the task.]",
+          "keyTechnologies": "[List the primary technologies, frameworks, and libraries used in the project. E.g., 'React, Node.js, Express, Jest, Webpack.']",
+          "importantUrls": "[List any relevant URLs, such as a link to a live staging environment, API documentation, or design mockups.]"
+        },
+        "requirementsAndConstraints": {
+          "functional": "[List specific, non-negotiable functional requirements. E.g., 'The endpoint must use the standard authentication middleware.']",
+          "nonFunctional": "[List non-functional requirements like performance, security, accessibility. E.g., 'The page load time must be under 2 seconds.', 'All new code must have 100% unit test coverage.']",
+          "technical": "[List any constraints or things to avoid. E.g., 'Do not introduce any new dependencies without prior approval.', 'Do not alter the existing database schema.']"
+        },
+        "successCriteria": "[Provide a clear, verifiable checklist for when the task is considered complete. E.g., 'All new code is covered by unit tests.', 'The new feature is accessible and meets WCAG 2.1 AA standards.', 'The application builds successfully without any new warnings.']",
+        "guidingPrinciples": [
+          "Deduce Intent First.",
+          "Test-Driven Development.",
+          "Clarity is Paramount.",
+          "Holistic Analysis.",
+          "Proactive Improvement."
+        ],
+        "executionFlow": [
+          "Explore & Plan",
+          "Execute & Verify",
+          "Test & Review",
+          "Record Memory and Submit"
+        ],
+        "deliverables": [
+          "[List the expected artifacts. E.g., 'A new file `src/api/user_profile.js` with the new endpoint.', 'Updated unit tests in `src/api/user_profile.test.js`.']",
+          "Updated documentation (e.g., READMEs, inline comments) for any new or modified code.",
+          "A pull request with a clear title, a summary of the changes, and a link to the original task."
+        ]
+      },
+      {
+        "title": "Analyze and Improve UI/UX",
+        "description": "To analyze and improve the frontend UI/UX of a repository.",
+        "category": "Iterative Development",
+        "role": "You are Jules, an expert AI software engineer with a specialization in UI/UX design and frontend development. Your purpose is to analyze the user interface and user experience of a web application and provide detailed, actionable recommendations for improvement.",
+        "objective": "Conduct a comprehensive analysis of the target website's UI/UX and produce a report with concrete suggestions for improvement. The suggestions should cover usability, visual design, and overall user experience.",
+        "context": {
+          "target": "<REPO_OR_SITE_URL>",
+          "type": "repo | deployed-site | repo+site",
+          "access": "public | private",
+          "businessProfile": "[Optional: Describe the business, its goals, and the target audience.]",
+          "keyUserJourneys": "[Optional: Describe the most important tasks users should be able to accomplish.]"
+        },
+        "requirementsAndConstraints": [
+          "Evidence-Based: All analysis and recommendations should be based on established UI/UX principles and best practices.",
+          "Actionable Suggestions: Recommendations should be specific and actionable.",
+          "Visual Appeal: Suggestions should consider the visual design and branding of the application."
+        ],
+        "guidingPrinciples": [
+          "User-Centric.",
+          "Clarity and Simplicity.",
+          "Consistency.",
+          "Proactive and Creative."
+        ],
+        "executionFlow": [
+          "Analysis",
+          "Improvement Suggestions"
+        ],
+        "deliverables": [
+          "UI_UX_AUDIT/ folder",
+          "UI_UX_AUDIT/REPORT.md",
+          "(Optional) UI_UX_AUDIT/WIREFRAMES/"
+        ]
+      }
+    ],
+    "documentation": {
+      "readme": {
+        "title": "Jules Prompts",
+        "introduction": "A curated library of pre-made, machine-readable task prompts that let Jules (or any agent) — and humans — turn intent into production-grade work.",
+        "gettingStarted": "To learn about the prompts in this library and how to use them together, please see the Jules Prompt Library Guide.",
+        "environmentSetup": "To ensure Jules can work effectively with your repository, it's crucial to have a well-defined environment setup. This helps in cloning, installing dependencies, and running tests reliably. For a detailed guide on how to configure your repository for Jules, please see the Environment Setup Guide.",
+        "howToUse": {
+          "forHumans": "If you are a human interacting with an AI agent, the simplest way to use a prompt is to navigate to the prompt file, copy the entire content, and paste it into your agent's instruction input.",
+          "forAgents": "AI agents can use the `prompts.json` file to discover and fetch prompts by parsing the file, selecting a prompt based on its title and description, and executing the content of the markdown file specified in the `path` field."
+        },
+        "contributing": "Contributions to this prompt library are welcome! The goal is to create a set of high-quality, general-purpose prompts that act as a 'guiding light' for agents and developers, encoding best practices for common software engineering tasks. If you have an idea for a new prompt or an improvement to an existing one, please open an issue to discuss it."
+      },
+      "environmentSetupGuide": {
+        "title": "Jules — Environment setup & AGENTS.md",
+        "goal": "Make it trivial for Jules to: clone your repo, install dependencies, run tests, and produce safe, reviewable changes.",
+        "quickFacts": "Jules runs each task inside a secure, short-lived Ubuntu VM where it clones your repository, installs dependencies and runs commands you provide. Use AGENTS.md + a repository setup script to make Jules deterministic and fast.",
+        "whenToAddSetup": "Add explicit setup instructions when your repo is non-trivial to build or test locally.",
+        "whereJulesLooks": [
+          "AGENTS.md (root)",
+          "README.md",
+          "Repository Configuration in the Jules UI"
+        ],
+        "whatToPutInAgentsMd": "Use Markdown. Keep it concise and machine-friendly with explicit commands. Suggested sections: Dev environment / quickstart, Build & test commands, Install / setup commands, Tooling / versions, CI checklist, Coding style / linting expectations, Security notes, Contact / maintainers.",
+        "setupScriptRecommendation": "Put the commands needed to install dependencies and run tests into the Jules repo Configuration -> Initial Setup box (or provide a script file in repo and reference it).",
+        "exampleScripts": {
+          "node": "set -euo pipefail; echo '--- environment checks ---'; node -v; npm -v || pnpm -v || yarn -v; npm ci; npm run lint --if-present || true; npm test --if-present",
+          "python": "set -euo pipefail; python -V; python -m venv .venv; . .venv/bin/activate; pip install -U pip; pip install -r requirements.txt; pytest -q",
+          "go": "set -euo pipefail; go version; go mod download; go test ./...",
+          "rust": "set -euo pipefail; rustup --version || true; rustc --version; cargo build --all --release; cargo test --all",
+          "java_maven": "set -euo pipefail; java -version; mvn -v; mvn -B -DskipTests=false test"
+        },
+        "validationChecklist": [
+          "Make the script idempotent and fast where possible.",
+          "Print version checks.",
+          "Keep output non-interactive.",
+          "Use `set -euo pipefail` for bash scripts.",
+          "Click Run and Snapshot in Jules and iterate until successful."
+        ],
+        "handlingSecrets": "Do not commit secrets to the repo. Prefer external secret stores or CI-style secrets injected at runtime.",
+        "troubleshooting": "Common issues include dependency mismatch, long setup times, failing tests locally but OK in CI, and missing system packages. Use logs from Jules to debug.",
+        "bestPractices": [
+          "Prefer lockfile installs.",
+          "Keep install steps minimal.",
+          "For monorepos, add package-level AGENTS.md files.",
+          "Add a `verify-environment.sh` script.",
+          "If your build needs private packages, document the auth method in AGENTS.md (without the secret)."
+        ],
+        "authoritativeGuidance": "This guide follows official Jules docs and the AGENTS.md recommendation. Keep your AGENTS.md small and explicit — agents read it first."
+      },
+      "promptsGuide": {
+        "title": "Jules Prompt Library Guide",
+        "introduction": "This repository contains a curated library of pre-made, machine-readable task prompts that empower an AI software engineer like Jules to turn user intent into production-grade work. This guide explains the purpose of each prompt and provides a recommended workflow for using them together.",
+        "promptLibrary": [
+          {
+            "name": "template_master_prompt.md",
+            "purpose": "The master template used to create and standardize all other prompts. It is not intended for direct use but serves as a 'golden copy' for prompt engineering."
+          },
+          {
+            "name": "task_generate_prompt_from_description.md",
+            "purpose": "To generate a new, high-quality prompt from a user's description.",
+            "whenToUse": [
+              "When you have an idea for a new prompt but want the AI to help you write it.",
+              "To quickly create new prompts that are consistent with the existing ones in the library."
+            ]
+          },
+          {
+            "name": "task_audit_repo.md",
+            "purpose": "To conduct a comprehensive, evidence-based audit of a repository or live website.",
+            "whenToUse": [
+              "When you are new to a project and need to understand how it works.",
+              "Before starting a major refactoring or migration project.",
+              "As a periodic health check for a project."
+            ]
+          },
+          {
+            "name": "task_analyze_and_improve_ui_ux.md",
+            "purpose": "To analyze and improve the frontend UI/UX of a repository.",
+            "whenToUse": [
+              "When you want to improve the user experience of your website.",
+              "Before starting a major redesign of your website.",
+              "When you want to get a fresh perspective on your website's UI/UX."
+            ]
+          },
+          {
+            "name": "task_harden_repo_initial.md",
+            "purpose": "To perform a one-time, comprehensive hardening and baselining pass on a new or unmaintained repository.",
+            "whenToUse": [
+              "On a brand new repository to set it up with best practices from the start.",
+              "On an existing repository that lacks modern CI/CD and testing infrastructure."
+            ]
+          },
+          {
+            "name": "task_harden_repo_iterative.md",
+            "purpose": "To perform ongoing, iterative improvements to a repository that has already been hardened.",
+            "whenToUse": [
+              "For regular maintenance and improvement of a mature project.",
+              "To fix flaky tests and improve the reliability of the CI/CD pipeline."
+            ]
+          },
+          {
+            "name": "task_fix_and_refine.md",
+            "purpose": "To transform a prototype or demo-quality project into a production-grade application.",
+            "whenToUse": [
+              "When you have a working prototype that needs to be made more robust.",
+              "To address technical debt and improve the overall quality of a codebase."
+            ]
+          },
+          {
+            "name": "task_build_from_plan.md",
+            "purpose": "To analyze a repository's blueprint/plan and current state, and iteratively implement the next logical steps to build a robust, production-grade system.",
+            "whenToUse": [
+              "When a project has a clear planning document but needs implementation.",
+              "To continue work on a partially completed project that has a defined roadmap."
+            ]
+          },
+          {
+            "name": "task_update_dependencies.md",
+            "purpose": "To update a project's dependencies to their latest compatible versions.",
+            "whenToUse": [
+              "To keep a project's dependencies up-to-date and secure.",
+              "As a regular maintenance task to avoid falling too far behind on dependency versions."
+            ]
+          },
+          {
+            "name": "task_curate_repo.md",
+            "purpose": "To analyze an unknown repository, make safe, reversible improvements, and provide a clear report.",
+            "whenToUse": [
+              "When you encounter a repository with no documentation and need to understand its contents.",
+              "For bulk curation or triage of a large number of repositories."
+            ]
+          }
+        ],
+        "recommendedWorkflow": [
+          {
+            "step": 1,
+            "action": "Audit the repository.",
+            "prompt": "task_audit_repo.md",
+            "goal": "To get a deep understanding of the project's current state.",
+            "outcome": "A comprehensive audit report that will inform the next steps."
+          },
+          {
+            "step": 2,
+            "action": "Harden the repository.",
+            "prompt": "task_harden_repo_initial.md",
+            "goal": "To set up a modern CI/CD pipeline and testing infrastructure.",
+            "outcome": "A repository with automated checks for quality, performance, and accessibility."
+          },
+          {
+            "step": 3,
+            "action": "Fix and refine the codebase.",
+            "prompt": "task_fix_and_refine.md",
+            "goal": "To address any bugs or architectural issues found in the audit.",
+            "outcome": "A robust, reliable, and well-documented codebase."
+          },
+          {
+            "step": 4,
+            "action": "Perform ongoing maintenance.",
+            "prompts": [
+              "task_harden_repo_iterative.md",
+              "task_update_dependencies.md"
+            ],
+            "goal": "To keep the project in a good state over time.",
+            "outcome": "A project that is continuously improved and kept up-to-date."
+          }
+        ]
+      }
+    },
+    "references": [
+      {
+        "id": 1,
+        "text": "Jules: Google's autonomous AI coding agent - Google Blog",
+        "url": "https://blog.google/technology/google-labs/jules/"
+      },
+      {
+        "id": 2,
+        "text": "Jules - An Asynchronous Coding Agent",
+        "url": "https://jules.google/"
+      },
+      {
+        "id": 3,
+        "text": "How to Actually Use Jules: A Developer's Guide to Google's AI Coding Agent - Medium",
+        "url": "https://medium.com/@creativeaininja/how-to-actually-use-jules-a-developers-guide-to-google-s-ai-coding-agent-dd34aea0fbee"
+      },
+      {
+        "id": 4,
+        "text": "Jules AI Review 2025: Google's Autonomous Coding Agent Tested - Skywork.ai",
+        "url": "https://skywork.ai/blog/jules-ai-review-2025-google-autonomous-coding-agent/"
+      },
+      {
+        "id": 5,
+        "text": "Jules: Google's AI Coder Hype vs. Hard Truths - Latenode",
+        "url": "https://latenode.com/blog/jules-google-ai-coder-truth"
+      },
+      {
+        "id": 6,
+        "text": "Is Jules utterly broken for anyone else? : r/JulesAgent - Reddit",
+        "url": "https://www.reddit.com/r/JulesAgent/comments/1kxw9ak/is_jules_utterly_broken_for_anyone_else/"
+      },
+      {
+        "id": 7,
+        "text": "Jules AI SWE Agent Review: Google's Take on Coding Automation | Engine - EngineLabs.ai",
+        "url": "https://www.enginelabs.ai/blog/jules-ai-swe-agent-googles-take-on-coding-automation"
+      },
+      {
+        "id": 8,
+        "text": "Google Jules: The Complete Guide to Google's AI Coding Agent | Entelligence Blog",
+        "url": "https://www.entelligence.ai/blogs/google-jules-free-async-ai-for-debugging-code"
+      },
+      {
+        "id": 9,
+        "text": "Getting started | Jules",
+        "url": "https://jules.google/docs"
+      },
+      {
+        "id": 10,
+        "text": "Jules: Inside Google's Asynchronous Coding Agent - GoCodeo",
+        "url": "https://www.gocodeo.com/post/jules-inside-googles-asynchronous-coding-agent"
+      },
+      {
+        "id": 11,
+        "text": "Changelog - Jules",
+        "url": "https://jules.google/docs/changelog/"
+      },
+      {
+        "id": 12,
+        "text": "What are AI agents? Definition, examples, and types | Google Cloud",
+        "url": "https://cloud.google.com/discover/what-are-ai-agents"
+      },
+      {
+        "id": 13,
+        "text": "Meet Jules' sharpest critic and most valuable ally - Google Developers Blog",
+        "url": "https://developers.googleblog.com/en/meet-jules-sharpest-critic-and-most-valuable-ally/"
+      },
+      {
+        "id": 14,
+        "text": "Google's Jules AI coding agent built a new feature I could actually ship while I made coffee! - ZDNet",
+        "url": "https://www.zdnet.com/article/googles-jules-ai-coding-agent-built-a-new-feature-i-could-actually-ship-while-i-made-coffee/"
+      },
+      {
+        "id": 15,
+        "text": "Vertex AI Agent Builder | Google Cloud",
+        "url": "https://cloud.google.com/products/agent-builder"
+      },
+      {
+        "id": 16,
+        "text": "Agent Development Kit - Google GitHub",
+        "url": "https://google.github.io/adk-docs/"
+      },
+      {
+        "id": 17,
+        "text": "Announcing the Agent2Agent Protocol (A2A) - Google for Developers Blog",
+        "url": "https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/"
+      }
+    ]
+  }
+}
