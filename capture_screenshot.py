@@ -24,7 +24,7 @@ async def main():
         await page.goto(file_path)
 
         # Espera um pouco para garantir que todos os elementos da página sejam carregados
-        await page.wait_for_load_state('networkidle')
+        await page.wait_for_load_state('domcontentloaded')
         await asyncio.sleep(5)  # Espera adicional de 5 segundos para renderização completa
 
         # Captura uma captura de tela da página inteira

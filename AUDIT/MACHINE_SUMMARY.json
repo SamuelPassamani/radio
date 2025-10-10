@@ -1,0 +1,41 @@
+{
+  "target": "radio",
+  "type": "repo",
+  "date": "2025-10-09",
+  "git_sha": "6569ee7e045b48e534973ddc9266843c89507f8d",
+  "live_url": "https://35ef8677.radio-f2e.pages.dev",
+  "run_commands": [
+    "python3 test_video_player.py",
+    "python3 capture_screenshot.py"
+  ],
+  "build_status": "N/A",
+  "health_checks": {
+    "status": "Passing",
+    "details": "Main page (index.html) loads correctly. Embedded YouTube video player is functional."
+  },
+  "top_3_issues": [
+    {
+      "id": "SEC-001",
+      "severity": "Critical",
+      "description": "Outdated and Vulnerable jQuery Version (v1.8.1) with known XSS vulnerabilities."
+    },
+    {
+      "id": "SEC-002",
+      "severity": "Critical",
+      "description": "Potential DOM-based Cross-Site Scripting (XSS) in ajax-page-loader.js due to insecure injection of HTML content."
+    },
+    {
+      "id": "QUAL-001",
+      "severity": "Medium",
+      "description": "Excessive inline CSS and JavaScript in index.html, leading to poor maintainability and performance."
+    }
+  ],
+  "test_status": {
+    "status": "Passing",
+    "details": "One test case for the video player iframe exists and passes. Test coverage is extremely low."
+  },
+  "coverage": "0%",
+  "observability": "None",
+  "secrets_needed": "None",
+  "confidence_overall": "HIGH"
+}
