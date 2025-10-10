@@ -2578,37 +2578,39 @@ sk_timer187845();
   <script>
     $(document).ready(function() {
       /* Widget do topo */
-      if (dayOfWeek = '0') {
+      var date = new Date();
+      var dayOfWeek = date.getDay();
+      if (dayOfWeek == 0) {
         $('.locutor.dom').css({
           opacity: '1'
         });
       }
-      if (dayOfWeek = '1') {
+      if (dayOfWeek == 1) {
         $('.locutor.seg').css({
           opacity: '1'
         });
       }
-      if (dayOfWeek = '2') {
+      if (dayOfWeek == 2) {
         $('.locutor.ter').css({
           opacity: '1'
         });
       }
-      if (dayOfWeek = '3') {
+      if (dayOfWeek == 3) {
         $('.locutor.qua').css({
           opacity: '1'
         });
       }
-      if (dayOfWeek = '4') {
+      if (dayOfWeek == 4) {
         $('.locutor.qui').css({
           opacity: '1'
         });
       }
-      if (dayOfWeek = '5') {
+      if (dayOfWeek == 5) {
         $('.locutor.sex').css({
           opacity: '1'
         });
       }
-      if (dayOfWeek = '6') {
+      if (dayOfWeek == 6) {
         $('.locutor.sab').css({
           opacity: '1'
         });
